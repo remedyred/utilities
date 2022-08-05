@@ -34,7 +34,7 @@ describe('parseOptions', () => {
 	test('parseOptions(undefined, true) should return throw a TypeError', () => {
 		const test_object = undefined
 		const default_object = true
-		// @ts-ignore
+		// @ts-expect-error
 		expect(() => parseOptions(test_object, default_object)).toThrow(TypeError)
 	})
 
@@ -67,17 +67,14 @@ describe('overloadOptions', () => {
 		other: false,
 		two: false
 	}
-	const baseSchemas: OverloadSchema[] = [
-		{
-			channel: 'string',
-			context: 'object',
-			config: 'object'
-		},
-		{
-			context: 'object',
-			config: 'object'
-		}
-	]
+	const baseSchemas: OverloadSchema[] = [{
+		channel: 'string',
+		context: 'object',
+		config: 'object'
+	}, {
+		context: 'object',
+		config: 'object'
+	}]
 
 	const baseExpected = {
 		channel: 'test',
