@@ -20,7 +20,7 @@ export const escapeReplacement = (str: string) => String(str).replace(/\$/g, '$$
 export type interpolateReplacements = Record<string, any | number | string>
 
 /**
- * interpolate string with data from object using {{key}} syntax or ${key} syntax
+ * interpolate string with data from object using `{{key}}` syntax or `${key}` syntax
  * @category Templating
  */
 export function interpolate(str: string, replacements: interpolateReplacements): string {
