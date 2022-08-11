@@ -113,6 +113,7 @@
 - [objectMethods](README.md#objectmethods)
 - [objectOnly](README.md#objectonly)
 - [objectPull](README.md#objectpull)
+- [objectSort](README.md#objectsort)
 
 ### Parsing Functions
 
@@ -291,13 +292,19 @@ ___
 
 ### IObject
 
-Ƭ **IObject**: `Record`<`string`, `any`\>
+Ƭ **IObject**: `Record`<`string` \| `symbol`, `any`\>
 
 ___
 
 ### ObjectPredicate
 
-Ƭ **ObjectPredicate**: (`key`: `string` \| `symbol`, `value?`: `any`, `obj?`: `object`) => `unknown`
+Ƭ **ObjectPredicate**<`T`\>: (`key`: `string` \| `symbol`, `value?`: `T`, `obj?`: `object`) => `unknown`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 #### Type declaration
 
@@ -308,7 +315,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` \| `symbol` |
-| `value?` | `any` |
+| `value?` | `T` |
 | `obj?` | `object` |
 
 ##### Returns
@@ -522,13 +529,19 @@ ___
 
 Convert an array to an object using the given key as the property
 
-**`example`**
+**`Example`**
+
+```ts
 arrayToObject([{id: 1, name: 'John'}, {id: 2, name: 'Jane'}], 'id', 'name')
 // {1: 'John', 2: 'Jane'}
+```
 
-**`example`**
+**`Example`**
+
+```ts
 arrayToObject([{id: 1, name: 'John'}, {id: 2, name: 'Jane'}], 'name')
 // {John: {id: 1, name: 'John'}, Jane: {id: 2, name: 'Jane'}}
+```
 
 #### Parameters
 
@@ -664,9 +677,12 @@ ___
 
 Parse options for a function
 
-**`example`**
+**`Example`**
+
+```ts
 const options = parseOptions(true, {param: 'default'}, 'my_param')
 // {param: 'default', my_param: true}
+```
 
 #### Parameters
 
@@ -674,7 +690,7 @@ const options = parseOptions(true, {param: 'default'}, 'my_param')
 | :------ | :------ | :------ |
 | `given` | `any` | The given options |
 | `defaults` | [`IObject`](README.md#iobject) | The default options |
-| `non_object_key?` | `string` | - |
+| `non_object_key?` | `string` | Optional key to use if the given options are not an object, will be added to the defaults object |
 
 #### Returns
 
@@ -824,7 +840,7 @@ Format a number in bytes.
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
 | `bytes` | `number` | `undefined` | The number of bytes. |
-| `decimals` | `number` | `2` | - |
+| `decimals?` | `number` | `2` | The number of decimals. |
 
 #### Returns
 
@@ -843,8 +859,8 @@ Format a number as currency.
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
 | `amount` | `number` | `undefined` | The number to format. |
-| `symbol` | `string` | `'$'` | - |
-| `decimals` | `number` | `2` | - |
+| `symbol?` | `string` | `'$'` | The currency symbol. |
+| `decimals?` | `number` | `2` | The number of decimals. |
 
 #### Returns
 
@@ -863,7 +879,7 @@ Format a number as a percentage.
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
 | `amount` | `number` | `undefined` | The number to format. |
-| `decimals` | `number` | `2` | - |
+| `decimals?` | `number` | `2` | The number of decimals to show. |
 
 #### Returns
 
@@ -882,7 +898,7 @@ limit the amount of decimals to the given number
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
 | `value` | `number` | `undefined` | the number to limit |
-| `max_places` | `number` | `2` | - |
+| `max_places?` | `number` | `2` | the maximum number of decimals |
 
 #### Returns
 
@@ -901,7 +917,7 @@ Pad a number with zeros.
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
 | `num` | `string` \| `number` | `undefined` | The number to pad. |
-| `length` | `number` | `2` | - |
+| `length?` | `number` | `2` | The length of the resulting string. |
 
 #### Returns
 
@@ -921,7 +937,7 @@ Generate a random number between min and max.
 | :------ | :------ | :------ | :------ |
 | `min` | `number` | `undefined` | The minimum number. |
 | `max` | `number` | `undefined` | The maximum number. |
-| `inclusive` | `boolean` | `true` | - |
+| `inclusive?` | `boolean` | `true` | Whether to include the max value in the range. |
 
 #### Returns
 
@@ -933,9 +949,15 @@ ___
 
 ### objectClone
 
-▸ **objectClone**(...`objects`): [`IObject`](README.md#iobject)
+▸ **objectClone**<`I`\>(...`objects`): `I`
 
 Deep clones an object
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
@@ -945,174 +967,232 @@ Deep clones an object
 
 #### Returns
 
-[`IObject`](README.md#iobject)
+`I`
 
 ___
 
 ### objectCopy
 
-▸ **objectCopy**(`obj`, `force?`): `any`[] \| [`IObject`](README.md#iobject) \| `undefined`
+▸ **objectCopy**<`I`\>(`obj`, `force?`): `I`
 
 Copy object as JSON (uses JSON.parse/JSON.stringify but won't throw any errors)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | [`IObject`](README.md#iobject) |
+| `obj` | `I` |
 | `force?` | `boolean` |
 
 #### Returns
 
-`any`[] \| [`IObject`](README.md#iobject) \| `undefined`
+`I`
 
 ___
 
 ### objectExcept
 
-▸ **objectExcept**(`obj`, `excluded`): [`IObject`](README.md#iobject)
+▸ **objectExcept**<`I`\>(`obj`, `excluded`): `I`
 
 Returns a new object without the excluded properties.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `obj` | [`IObject`](README.md#iobject) | the object to filter |
+| `obj` | `I` | the object to filter |
 | `excluded` | `string`[] | the allowed properties |
 
 #### Returns
 
-[`IObject`](README.md#iobject)
+`I`
 
 ___
 
 ### objectFilter
 
-▸ **objectFilter**(`obj`, `predicate?`): [`IObject`](README.md#iobject)
+▸ **objectFilter**<`I`, `R`\>(`obj`, `predicate?`): `R`
 
 Filter an object by a given predicate
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
+| `R` | `Partial`<`I`\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | [`IObject`](README.md#iobject) |
-| `predicate` | [`ObjectPredicate`](README.md#objectpredicate) |
+| `obj` | `I` |
+| `predicate` | [`ObjectPredicate`](README.md#objectpredicate)<`any`\> |
 
 #### Returns
 
-[`IObject`](README.md#iobject)
+`R`
 
 ___
 
 ### objectFind
 
-▸ **objectFind**(`obj`, `predicate`): `any` \| `undefined`
+▸ **objectFind**<`T`, `I`\>(`obj`, `predicate?`): `T` \| `undefined`
 
 Finds an object property's value that matches the given predicate
 
-#### Parameters
+#### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | [`IObject`](README.md#iobject) |
-| `predicate` | `string` \| [`ObjectPredicate`](README.md#objectpredicate) |
+| `T` | `any` |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `obj` | `I` |  |
+| `predicate?` | `string` \| `symbol` \| [`ObjectPredicate`](README.md#objectpredicate)<`any`\> | A string or function that returns a boolean |
 
 #### Returns
 
-`any` \| `undefined`
+`T` \| `undefined`
 
 ___
 
 ### objectFindEntry
 
-▸ **objectFindEntry**(`obj`, `predicate`): `any` \| `undefined`
+▸ **objectFindEntry**<`T`, `I`\>(`obj`, `predicate`): [`string`, `T`] \| `undefined`
 
 Finds an object property's entry [key, value] that matches the given predicate
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | [`IObject`](README.md#iobject) |
-| `predicate` | `string` \| [`ObjectPredicate`](README.md#objectpredicate) |
+| `obj` | `I` |
+| `predicate` | `string` \| `symbol` \| [`ObjectPredicate`](README.md#objectpredicate)<`any`\> |
 
 #### Returns
 
-`any` \| `undefined`
+[`string`, `T`] \| `undefined`
 
 ___
 
 ### objectFindKey
 
-▸ **objectFindKey**(`obj`, `predicate`): `string` \| `undefined`
+▸ **objectFindKey**<`I`\>(`obj`, `predicate`): `string` \| `symbol` \| `undefined`
 
 Finds an object property's name that matches the given predicate
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | [`IObject`](README.md#iobject) |
-| `predicate` | `string` \| [`ObjectPredicate`](README.md#objectpredicate) |
+| `obj` | `I` |
+| `predicate` | `string` \| `symbol` \| [`ObjectPredicate`](README.md#objectpredicate)<`any`\> |
 
 #### Returns
 
-`string` \| `undefined`
+`string` \| `symbol` \| `undefined`
 
 ___
 
 ### objectFlatten
 
-▸ **objectFlatten**(`obj`, `prefix?`): [`IObject`](README.md#iobject)
+▸ **objectFlatten**<`I`\>(`obj`, `prefix?`): `I`
 
 Flattens an object into a single level using dot notation for nested properties.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `obj` | [`IObject`](README.md#iobject) | `undefined` |
+| `obj` | `I` | `undefined` |
 | `prefix` | `string` | `''` |
 
 #### Returns
 
-[`IObject`](README.md#iobject)
+`I`
 
 ___
 
 ### objectGetMethod
 
-▸ **objectGetMethod**(`obj`, `method`, `strict?`): `any`
+▸ **objectGetMethod**<`T`, `I`\>(`obj`, `method`, `strict?`): `T` \| `undefined`
 
 Checks if an object has a method with the given name, and returns the method
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | [`IObject`](README.md#iobject) |
+| `obj` | `I` |
 | `method` | `string` |
 | `strict?` | `boolean` |
 
 #### Returns
 
-`any`
+`T` \| `undefined`
 
 ___
 
 ### objectHasMethod
 
-▸ **objectHasMethod**(`obj`, `method`, `strict?`): `boolean`
+▸ **objectHasMethod**<`I`\>(`obj`, `method`, `strict?`): `boolean`
 
 Checks if an object has a method with the given name
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | [`IObject`](README.md#iobject) |
+| `obj` | `I` |
 | `method` | `string` |
 | `strict?` | `boolean` |
 
@@ -1124,9 +1204,15 @@ ___
 
 ### objectMerge
 
-▸ **objectMerge**(...`objects`): [`IObject`](README.md#iobject)
+▸ **objectMerge**<`I`\>(...`objects`): `I`
 
 Merge two or more objects together
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
@@ -1136,15 +1222,21 @@ Merge two or more objects together
 
 #### Returns
 
-[`IObject`](README.md#iobject)
+`I`
 
 ___
 
 ### objectMergeDeep
 
-▸ **objectMergeDeep**(...`objects`): [`IObject`](README.md#iobject)
+▸ **objectMergeDeep**<`I`\>(...`objects`): `I`
 
 Merge two or more objects together, recursing child values
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
@@ -1154,21 +1246,27 @@ Merge two or more objects together, recursing child values
 
 #### Returns
 
-[`IObject`](README.md#iobject)
+`I`
 
 ___
 
 ### objectMethods
 
-▸ **objectMethods**(`obj`): `string`[]
+▸ **objectMethods**<`I`\>(`obj`): `string`[]
 
 Returns an array of the given object's available method names
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | [`IObject`](README.md#iobject) |
+| `obj` | `I` |
 
 #### Returns
 
@@ -1178,34 +1276,46 @@ ___
 
 ### objectOnly
 
-▸ **objectOnly**(`obj`, `allowed`): [`IObject`](README.md#iobject)
+▸ **objectOnly**<`I`\>(`obj`, `allowed`): `I`
 
 Returns a new object with only the allowed properties.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | [`IObject`](README.md#iobject) |
+| `obj` | `I` |
 | `allowed` | `string`[] |
 
 #### Returns
 
-[`IObject`](README.md#iobject)
+`I`
 
 ___
 
 ### objectPull
 
-▸ **objectPull**(`obj`, `key`): `any`
+▸ **objectPull**<`I`\>(`obj`, `key`): `any`
 
 Remove a property from an object and return the value
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | [`IObject`](README.md#iobject) |
+| `obj` | `I` |
 | `key` | `string` |
 
 #### Returns
@@ -1214,24 +1324,75 @@ Remove a property from an object and return the value
 
 ___
 
-## Parsing Functions
+### objectSort
 
-### JSONParse
+▸ **objectSort**<`I`\>(`obj`): `I`
 
-▸ **JSONParse**(`json`, `strict?`): `any`[] \| `object` \| `undefined`
+Sort an object by it's keys
 
-Parse a string into JSON
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `json` | `string` |
+| `obj` | `I` |
+
+#### Returns
+
+`I`
+
+▸ **objectSort**<`I`\>(`obj`, `sortFn`): `I`
+
+Sort an object by a predicate
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `obj` | `I` |
+| `sortFn` | (`a`: [`string`, `unknown`], `b`: [`string`, `unknown`]) => `number` |
+
+#### Returns
+
+`I`
+
+___
+
+## Parsing Functions
+
+### JSONParse
+
+▸ **JSONParse**<`T`\>(`text`, `strict?`): `T` \| `undefined`
+
+Parse a string into JSON
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `text` | `string` |
 | `strict?` | `boolean` |
 
 #### Returns
 
-`any`[] \| `object` \| `undefined`
+`T` \| `undefined`
 
 ___
 
@@ -1256,15 +1417,21 @@ ___
 
 ### JSONStringify
 
-▸ **JSONStringify**(`data`, `options?`): `string`
+▸ **JSONStringify**<`T`\>(`data`, `options?`): `string`
 
 Parse a variable into a JSON string
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `data` | `any` | `undefined` |
+| `data` | `T` | `undefined` |
 | `options` | `JSONStringifyOptions` | `false` |
 
 #### Returns
@@ -1279,7 +1446,9 @@ ___
 
 Convert a string to camelCase
 
-**`see`** https://www.npmjs.com/package/just-camel-case
+**`See`**
+
+https://www.npmjs.com/package/just-camel-case
 
 #### Parameters
 
@@ -1395,7 +1564,11 @@ ___
 
 Parse a string into it's primitive type if possible. If not, return the original variable.
 
-**`example`** '123' => 123 | '123.456' => 123.456 | 'true' => true | 'false' => false | 'null' => null | 'undefined' => undefined
+**`Example`**
+
+```ts
+'123' => 123 | '123.456' => 123.456 | 'true' => true | 'false' => false | 'null' => null | 'undefined' => undefined
+```
 
 #### Parameters
 
@@ -1613,7 +1786,7 @@ ___
 
 ▸ **interpolate**(`str`, `replacements`): `string`
 
-interpolate string with data from object using {{key}} syntax or ${key} syntax
+interpolate string with data from object using `{{key}}` syntax or `${key}` syntax
 
 #### Parameters
 
