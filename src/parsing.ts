@@ -1,5 +1,5 @@
 import {parseOptions} from './functions'
-import {isDefined, isType} from './validations'
+import {isDefined} from './validations'
 import {isJSONString} from './variables'
 
 /**
@@ -47,21 +47,20 @@ export function parse(value: any): any {
  * Parse a string into JSON
  * @category Parsing
  */
-export function JSONParse(json: string, strict?: boolean): any[] | object | undefined {
-	if (!isDefined(json)) {
+export function JSONParse<T = any>(text: string, strict?: boolean): T | undefined {
+	if (!isDefined(text)) {
 		return undefined
 	}
 
+	let json: T | undefined
 	try {
-		json = JSON.parse(json)
+		json = JSON.parse(text)
 	} catch (e) {
 		if (strict) {
 			throw e
-		} else {
-			return undefined
 		}
 	}
-	return json as unknown as any[] | object
+	return json
 }
 
 type JSONStringifyOptions = boolean | {force?: boolean; pretty?: boolean | number}
@@ -70,7 +69,7 @@ type JSONStringifyOptions = boolean | {force?: boolean; pretty?: boolean | numbe
  * Parse a variable into a JSON string
  * @category Parsing
  */
-export function JSONStringify(data: any, options: JSONStringifyOptions = false): string {
+export function JSONStringify<T = any>(data: T, options: JSONStringifyOptions = false): string {
 	if (!isDefined(data)) {
 		return ''
 	}
@@ -79,18 +78,13 @@ export function JSONStringify(data: any, options: JSONStringifyOptions = false):
 	}
 
 	const parsedOptions = parseOptions(options, {force: false, pretty: undefined})
-
 	parsedOptions.pretty = parsedOptions.pretty === true ? 2 : parsedOptions.pretty
 
-	if (isType(data, 'object') || isType(data, 'array')) {
-		try {
-			data = JSON.stringify(data, null, parsedOptions.pretty)
-		} catch (e) {
-			return ''
-		}
+	try {
+		return JSON.stringify(data, null, parsedOptions.pretty)
+	} catch (e) {
+		return ''
 	}
-
-	return data
 }
 
 /**
