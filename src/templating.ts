@@ -24,6 +24,7 @@ export type interpolateReplacements = Record<string, any | number | string>
  * @category Templating
  */
 export function interpolate(str: string, replacements: interpolateReplacements): string {
+	// eslint-disable-next-line prefer-const
 	for (let [from, to] of Object.entries(objectFlatten(replacements))) {
 		to = escapeReplacement(to)
 		if (!from.startsWith('{{')) {
