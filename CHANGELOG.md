@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/snickbit/snickbit.js/compare/@snickbit/utilities@3.2.2...@snickbit/utilities@3.3.0) (2022-08-11)
+
+### Features
+
+* **objects:** add objectSort helper ([8347e1e](https://github.com/snickbit/snickbit.js/commit/8347e1eb5bdd8d51dd9ed6ccc3a762140032a4fa))
+* **utilities:** Add generics and tests to object helpers ([#15](https://github.com/snickbit/snickbit.js/issues/15)) ([1dc46bc](https://github.com/snickbit/snickbit.js/commit/1dc46bc925757607186b867e8c018c3b36644753))
+
 ## [3.2.2](https://github.com/snickbit/snickbit.js/compare/@snickbit/utilities@3.2.1...@snickbit/utilities@3.2.2) (2022-08-06)
 
 **Note:** Version bump only for package @snickbit/utilities
