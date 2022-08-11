@@ -1,4 +1,4 @@
-import {objectClone, objectCopy, objectExcept, objectFilter, objectFind, objectFindEntry, objectFindKey, objectFlatten, objectGetMethod, objectHasMethod, objectMerge, objectMergeDeep, objectMethods, objectOnly, ObjectPredicate, objectPull} from '../src'
+import {objectClone, objectCopy, objectExcept, objectFilter, objectFind, objectFindEntry, objectFindKey, objectFlatten, objectGetMethod, objectHasMethod, objectMerge, objectMergeDeep, objectMethods, objectOnly, ObjectPredicate, objectPull, objectSort} from '../src'
 
 const mockPlainObject = {
 	a: 1,
@@ -280,6 +280,42 @@ describe('objects', () => {
 
 		it('should remove the key from the object', () => {
 			expect(pullableObject).toStrictEqual({b: 2, c: 3})
+		})
+	})
+
+	describe.only('objectSort', () => {
+		it('should expose a function', () => {
+			expect(objectSort).toBeDefined()
+		})
+
+		let unsortedObject: any
+
+		beforeEach(() => {
+			unsortedObject = {
+				c: 3,
+				b: 2,
+				a: 1
+			}
+		})
+
+		it('unsorted object should not equal sorted object', () => {
+			expect(JSON.stringify(unsortedObject)).not.toEqual(JSON.stringify(mockPlainObject))
+		})
+
+		it('should accept an object and sort it by it\'s keys', () => {
+			const sorted = objectSort(unsortedObject)
+			expect(JSON.stringify(sorted)).toEqual(JSON.stringify(mockPlainObject))
+		})
+
+		it('should accept an object and sort it by a predicate', () => {
+			const sorted = objectSort(unsortedObject, ([, value_a]: [string, number], [, value_b]: [string, number]) => {
+				return value_a - value_b
+			})
+			expect(JSON.stringify(sorted)).toEqual(JSON.stringify({
+				a: 1,
+				b: 2,
+				c: 3
+			}))
 		})
 	})
 })

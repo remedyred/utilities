@@ -164,7 +164,7 @@ export function objectClone<I extends object = IObject>(...objects: IObject[]): 
  * Copy object as JSON (uses JSON.parse/JSON.stringify but won't throw any errors)
  * @category Objects
  */
-export function objectCopy<I extends object = IObject>(obj: I, force?: boolean): I | undefined {
+export function objectCopy<I extends object = IObject>(obj: I, force?: boolean): I {
 	const stringified = JSONStringify(obj, force) || '{}'
 	return JSONParse<I>(stringified) as I
 }
@@ -232,4 +232,26 @@ export function objectPull<I extends object = IObject>(obj: I, key: string): any
 	const value = obj[key]
 	delete obj[key]
 	return value
+}
+
+/**
+ * Sort an object by it's keys
+ * @category Objects
+ */
+export function objectSort<I extends object = IObject>(obj: I): I
+
+/**
+ * Sort an object by a predicate
+ * @category Objects
+ */
+export function objectSort<I extends object = IObject>(obj: I, sortFn: (a: [string, unknown], b: [string, unknown]) => number): I
+export function objectSort<I extends object = IObject>(obj: I, sortFn?: (a: [string, unknown], b: [string, unknown]) => number): I {
+	const toReturn = {} as I
+	const keys = sortFn
+		? Object.entries(obj).sort((a, b) => sortFn(a, b)).map(item => item[0])
+		: Object.keys(obj).sort()
+	for (const key of keys) {
+		toReturn[key] = obj[key]
+	}
+	return toReturn
 }
