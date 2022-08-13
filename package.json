@@ -1,6 +1,6 @@
 {
 	"name": "@snickbit/utilities",
-	"version": "3.3.0",
+	"version": "3.3.1",
 	"description": "A collection of simple JavaScript helpers",
 	"license": "MIT",
 	"exports": {
@@ -31,7 +31,7 @@
 		"testEnvironment": "node"
 	},
 	"dependencies": {
-		"@snickbit/plural": "^0.0.4",
+		"@snickbit/plural": "^0.0.5",
 		"just-camel-case": "^6.0.1",
 		"nanoid": "^3.3.4"
 	},
