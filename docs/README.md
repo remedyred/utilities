@@ -93,6 +93,8 @@
 - [formatCurrency](README.md#formatcurrency)
 - [formatPercentage](README.md#formatpercentage)
 - [maxDecimals](README.md#maxdecimals)
+- [numberEven](README.md#numbereven)
+- [numberOdd](README.md#numberodd)
 - [numberPad](README.md#numberpad)
 - [randomBetween](README.md#randombetween)
 
@@ -899,6 +901,44 @@ limit the amount of decimals to the given number
 | :------ | :------ | :------ | :------ |
 | `value` | `number` | `undefined` | the number to limit |
 | `max_places?` | `number` | `2` | the maximum number of decimals |
+
+#### Returns
+
+`number`
+
+___
+
+### numberEven
+
+▸ **numberEven**(`num`, `subtract?`): `number`
+
+Force a number to be even
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `num` | `number` | `undefined` | the number to force even |
+| `subtract?` | `boolean` | `false` | whether to subtract 1 from the number if it is odd |
+
+#### Returns
+
+`number`
+
+___
+
+### numberOdd
+
+▸ **numberOdd**(`num`, `subtract?`): `number`
+
+Force a number to be odd
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `num` | `number` | `undefined` | the number to force odd |
+| `subtract?` | `boolean` | `false` | whether to subtract 1 from the number if it is even |
 
 #### Returns
 

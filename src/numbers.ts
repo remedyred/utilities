@@ -77,3 +77,23 @@ export function randomBetween(min: number, max: number, inclusive = true): numbe
 	max = Math.floor(max)
 	return Math.floor(Math.random() * (max - min + (inclusive ? 1 : 0)) + min)
 }
+
+/**
+ * Force a number to be even
+ * @param {number} num - the number to force even
+ * @param {boolean} [subtract=false] - whether to subtract 1 from the number if it is odd
+ * @category Numbers
+ */
+export function numberEven(num: number, subtract = false): number {
+	return num % 2 === 0 ? num : num + (subtract ? -1 : 1)
+}
+
+/**
+ * Force a number to be odd
+ * @param {number} num - the number to force odd
+ * @param {boolean} [subtract=false] - whether to subtract 1 from the number if it is even
+ * @category Numbers
+ */
+export function numberOdd(num: number, subtract = false): number {
+	return num % 2 === 1 ? num : num + (subtract ? -1 : 1)
+}
