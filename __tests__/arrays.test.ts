@@ -14,6 +14,8 @@ describe('arrays', () => {
 			9,
 			10
 		]
+
+		/* eslint-disable unicorn/consistent-function-scoping */
 		const callback = (...args: any[]) => args[0] > 5
 		expect(arrayReject(arr, callback)).toEqual([
 			1,

@@ -35,9 +35,9 @@ export function formatBytes(bytes: number, decimals = 2): string {
 		'YB'
 	]
 
-	const i = Math.floor(Math.log(bytes) / Math.log(k))
+	const index = Math.floor(Math.log(bytes) / Math.log(k))
 
-	return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
+	return `${Number.parseFloat((bytes / Math.pow(k, index)).toFixed(dm))} ${sizes[index]}`
 }
 
 /**
@@ -47,7 +47,7 @@ export function formatBytes(bytes: number, decimals = 2): string {
  * @param [decimals=2] - The number of decimals.
  * @category Numbers
  */
-export const formatCurrency = (amount: number, symbol = '$', decimals = 2) => symbol + parseFloat(String(amount || '0')).toFixed(decimals)
+export const formatCurrency = (amount: number, symbol = '$', decimals = 2) => symbol + Number.parseFloat(String(amount || '0')).toFixed(decimals)
 
 /**
  * Format a number as a percentage.
@@ -55,7 +55,7 @@ export const formatCurrency = (amount: number, symbol = '$', decimals = 2) => sy
  * @param [decimals=2] - The number of decimals to show.
  * @category Numbers
  */
-export const formatPercentage = (amount: number, decimals = 2) => `${parseFloat(String(amount || '0')).toFixed(decimals)}%`
+export const formatPercentage = (amount: number, decimals = 2) => `${Number.parseFloat(String(amount || '0')).toFixed(decimals)}%`
 
 /**
  * limit the amount of decimals to the given number
@@ -63,7 +63,7 @@ export const formatPercentage = (amount: number, decimals = 2) => `${parseFloat(
  * @param [max_places=2] - the maximum number of decimals
  * @category Numbers
  */
-export const maxDecimals = (value: number, max_places = 2) => +parseFloat(String(value)).toFixed(max_places)
+export const maxDecimals = (value: number, max_places = 2) => +Number.parseFloat(String(value)).toFixed(max_places)
 
 /**
  * Generate a random number between min and max.

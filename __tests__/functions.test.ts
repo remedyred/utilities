@@ -67,14 +67,17 @@ describe('overloadOptions', () => {
 		other: false,
 		two: false
 	}
-	const baseSchemas: OverloadSchema[] = [{
-		channel: 'string',
-		context: 'object',
-		config: 'object'
-	}, {
-		context: 'object',
-		config: 'object'
-	}]
+	const baseSchemas: OverloadSchema[] = [
+		{
+			channel: 'string',
+			context: 'object',
+			config: 'object'
+		},
+		{
+			context: 'object',
+			config: 'object'
+		}
+	]
 
 	const baseExpected = {
 		channel: 'test',

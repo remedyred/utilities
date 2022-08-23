@@ -8,26 +8,26 @@ export type ArrayPredicate = (value: any, index?: number, array?: any[]) => unkn
  * Checks if the given array only contains a single value, optionally pass a value or predicate to check against
  * @category Arrays
  */
-export function isSingle(arr: any[], value?: any): boolean
-export function isSingle(arr: any[], predicate?: ArrayPredicate): boolean {
-	if (arr.length !== 1) {
+export function isSingle(array: any[], value?: any): boolean
+export function isSingle(array: any[], predicate?: ArrayPredicate): boolean {
+	if (array.length !== 1) {
 		return false
 	}
 
-	return !predicate || (isFunction(predicate) ? !!(predicate as ArrayPredicate)(arr[0], 0, arr) : arr.includes(predicate))
+	return !predicate || (isFunction(predicate) ? !!(predicate as ArrayPredicate)(array[0], 0, array) : array.includes(predicate))
 }
 
 /**
  * Returns unique values from an array. Optionally pass a key when the array is an object array.
  * @category Arrays
  */
-export const arrayUnique = (arr: any[], key?: string): any[] => arr.filter((value, index, self) => (key ? self.findIndex(item => item[key] === value[key]) : self.indexOf(value)) === index)
+export const arrayUnique = (array: any[], key?: string): any[] => array.filter((value, index, self) => (key ? self.findIndex(item => item[key] === value[key]) : self.indexOf(value)) === index)
 
 /**
  * Returns unique values from an array, ignoring case. Optionally pass a key when the array is an object array.
  * @category Arrays
  */
-export const arrayUniqueInsensitive = (arr: any[], key?: string): any[] => arr.filter((value, index, self) => (key ? self.findIndex(item => item[key].toLowerCase() === value[key].toLowerCase()) : self.findIndex(item => item.toLowerCase() === value.toLowerCase())) === index)
+export const arrayUniqueInsensitive = (array: any[], key?: string): any[] => array.filter((value, index, self) => (key ? self.findIndex(item => item[key].toLowerCase() === value[key].toLowerCase()) : self.findIndex(item => item.toLowerCase() === value.toLowerCase())) === index)
 
 /**
  * Convert an array to an object using the given key as the property
@@ -40,7 +40,7 @@ export const arrayUniqueInsensitive = (arr: any[], key?: string): any[] => arr.f
  * arrayToObject([{id: 1, name: 'John'}, {id: 2, name: 'Jane'}], 'name')
  * // {John: {id: 1, name: 'John'}, Jane: {id: 2, name: 'Jane'}}
  */
-export const arrayToObject = (arr: any[], key: number | string, value: number | string): object => arr.reduce((obj, item) => Object.assign(obj, {[item[key]]: value ? item[value] : item}), {})
+export const arrayToObject = (array: any[], key: number | string, value: number | string): object => Object.fromEntries(array.map(item => [item[key], value ? item[value] : item]))
 
 /**
  * Wrap a variable in an array if it is not already an array
@@ -52,11 +52,11 @@ export const arrayWrap = (values: any[] | any): any[] => Array.isArray(values) ?
  * Return the duplicate values from an array
  * @category Arrays
  */
-export function arrayDuplicates(arr: any[], predicate?: ArrayPredicate): any[] {
+export function arrayDuplicates(array: any[], predicate?: ArrayPredicate): any[] {
 	const unique: any[] = [],
 		duplicates: any[] = []
 	predicate = predicate || (value => value)
-	for (const item of arr) {
+	for (const item of array) {
 		if (unique.includes(predicate(item))) {
 			duplicates.push(item)
 		} else {
@@ -70,23 +70,23 @@ export function arrayDuplicates(arr: any[], predicate?: ArrayPredicate): any[] {
  * Finds and returns an element from an array, removing it in the process
  * @category Arrays
  */
-export function arrayRemove(arr: any[], value: any): any[] {
-	if (!arr || !value) {
-		return arr
+export function arrayRemove(array: any[], value: any): any[] {
+	if (!array || !value) {
+		return array
 	}
-	const index = arr.indexOf(value)
+	const index = array.indexOf(value)
 	if (index >= 0) {
-		arr.splice(index, 1)
+		array.splice(index, 1)
 	}
-	return arr
+	return array
 }
 
 /**
  * Shuffles/randomizes an array
  * @category Arrays
  */
-export function arrayShuffle(arr: any[]): any[] {
-	let currentIndex = arr.length,
+export function arrayShuffle(array: any[]): any[] {
+	let currentIndex = array.length,
 		randomIndex
 
 	// While there remain elements to shuffle.
@@ -95,10 +95,10 @@ export function arrayShuffle(arr: any[]): any[] {
 		randomIndex = Math.floor(Math.random() * currentIndex)
 		currentIndex--
 		// And swap it with the current element.
-		[arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]]
+		[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]]
 	}
 
-	return arr
+	return array
 }
 
 /**
@@ -107,9 +107,9 @@ export function arrayShuffle(arr: any[]): any[] {
  */
 export function arrayMerge(...arrs: any[][]): any[] {
 	let toReturn: any[] = []
-	for (const arr of arrs) {
-		if (arr && typeOf(arr) === 'array') {
-			toReturn = [...toReturn, ...arr]
+	for (const array of arrs) {
+		if (array && typeOf(array) === 'array') {
+			toReturn = [...toReturn, ...array]
 		}
 	}
 	return toReturn
@@ -121,8 +121,8 @@ export function arrayMerge(...arrs: any[][]): any[] {
  */
 export function arrayMergeDeep(...arrs: any[][]): any[] {
 	const toReturn: any[] = []
-	for (const arr of arrs) {
-		for (const [key, value] of arr.entries()) {
+	for (const array of arrs) {
+		for (const [key, value] of array.entries()) {
 			toReturn[key] = mergeDeep(toReturn[key], value)
 		}
 	}
@@ -133,6 +133,6 @@ export function arrayMergeDeep(...arrs: any[][]): any[] {
  * Get the reverse of a filtered array
  * @category Arrays
  */
-export function arrayReject(arr: any[], callback: (...args: any[]) => boolean): any[] {
-	return arr.filter((...args: any[]) => !callback.apply(arr, args))
+export function arrayReject(array: any[], callback: (...args: any[]) => boolean): any[] {
+	return array.filter((...args: any[]) => !callback.apply(array, args))
 }

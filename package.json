@@ -16,7 +16,7 @@
 	],
 	"scripts": {
 		"build": "indexer && tsup --minify",
-		"clean": "shx rm -rf ./dist",
+		"clean": "shx rm -rf ./dist ./.types",
 		"depcheck": "depcheck",
 		"dev": "indexer && tsup",
 		"docs": "typedoc",
@@ -51,16 +51,5 @@
 	},
 	"engines": {
 		"node": ">= 12"
-	},
-	"tsup": {
-		"entry": [
-			"src/index.ts"
-		],
-		"clean": true,
-		"dts": true,
-		"format": [
-			"esm",
-			"cjs"
-		]
 	}
 }

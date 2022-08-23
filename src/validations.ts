@@ -107,7 +107,7 @@ export const isString = (value: any): value is string => typeof value === 'strin
  * Check if a variable is a number
  * @category Validation
  */
-export const isNumber = (value: any): value is number => !isNaN(parseInt(value))
+export const isNumber = (value: any): value is number => !Number.isNaN(Number.parseInt(value))
 
 /**
  * Check if a variable is a boolean
@@ -151,7 +151,7 @@ export function isType(value: any, type: VariableType | VariableTypeDefinition |
  * Check if a variable is a Base64 string
  * @category Validation
  */
-export const isBase64 = (content: string) => /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/.test(content)
+export const isBase64 = (content: string) => /^([\d+/A-Za-z]{4})*(([\d+/A-Za-z]{2}==)|([\d+/A-Za-z]{3}=))?$/.test(content)
 
 /**
  * Check if a variable is a valid date
@@ -160,7 +160,7 @@ export const isBase64 = (content: string) => /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/
 export function isDate(value: any): value is Date {
 	try {
 		return value instanceof Date || new Date(value).toString() !== 'Invalid Date'
-	} catch (e) {
+	} catch {
 		return false
 	}
 }

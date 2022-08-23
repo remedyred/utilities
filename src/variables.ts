@@ -33,7 +33,7 @@ export function isJSONString(value: any, returnValue = false) {
 	try {
 		const result = JSON.parse(value)
 		return returnValue ? result : true
-	} catch (e) {
+	} catch {
 		return false
 	}
 }
@@ -148,7 +148,7 @@ export function mergeDeep(...values: any[] | IObject[]): any[] | IObject {
  */
 export function clone(value: any): any {
 	if (isArray(value)) {
-		return value.slice()
+		return [...value]
 	} else if (isObject(value)) {
 		return {...value}
 	}
