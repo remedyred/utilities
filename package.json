@@ -1,6 +1,6 @@
 {
 	"name": "@snickbit/utilities",
-	"version": "3.4.0",
+	"version": "3.4.1",
 	"description": "A collection of simple JavaScript helpers",
 	"license": "MIT",
 	"exports": {
@@ -27,14 +27,17 @@
 		"watch": "pnpm run dev --watch"
 	},
 	"release": {
-		"extends": "../../.releaserc.json"
+		"extends": [
+			"semantic-release-monorepo",
+			"@snickbit/semantic-release"
+		]
 	},
 	"jest": {
 		"preset": "ts-jest",
 		"testEnvironment": "node"
 	},
 	"dependencies": {
-		"@snickbit/plural": "^0.0.5",
+		"@snickbit/plural": "^0.0.6",
 		"just-camel-case": "^6.0.1",
 		"nanoid": "^3.3.4"
 	},
