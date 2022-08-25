@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.1](https://github.com/snickbit/snickbit.js/compare/@snickbit/utilities@3.4.0...@snickbit/utilities@3.4.1) (2022-08-25)
+
+**Note:** Version bump only for package @snickbit/utilities
+
 # [3.4.0](https://github.com/snickbit/snickbit.js/compare/@snickbit/utilities@3.3.1...@snickbit/utilities@3.4.0) (2022-08-19)
 
 ### Features
