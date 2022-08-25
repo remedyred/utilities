@@ -2,6 +2,10 @@
 
 ## Table of contents
 
+### References
+
+- [singular](README.md#singular)
+
 ### Validation Interfaces
 
 - [AnyFunction](interfaces/AnyFunction.md)
@@ -43,6 +47,10 @@
 - [EmptyArray](README.md#emptyarray)
 - [EmptyObject](README.md#emptyobject)
 - [VariableTypeDefinition](README.md#variabletypedefinition)
+
+### Properties
+
+- [plural](README.md#plural)
 
 ### Variables
 
@@ -129,9 +137,7 @@
 - [limitWords](README.md#limitwords)
 - [padString](README.md#padstring)
 - [parse](README.md#parse)
-- [plural](README.md#plural)
 - [safeVarName](README.md#safevarname)
-- [singular](README.md#singular)
 - [sleep](README.md#sleep)
 - [slugify](README.md#slugify)
 - [snakeCase](README.md#snakecase)
@@ -173,6 +179,12 @@
 - [merge](README.md#merge)
 - [mergeDeep](README.md#mergedeep)
 - [typeOf](README.md#typeof)
+
+## References
+
+### singular
+
+Renames and re-exports [plural](README.md#plural)
 
 ## Arrays Type Aliases
 
@@ -300,7 +312,7 @@ ___
 
 ### ObjectPredicate
 
-Ƭ **ObjectPredicate**<`T`\>: (`key`: `string` \| `symbol`, `value?`: `T`, `obj?`: `object`) => `unknown`
+Ƭ **ObjectPredicate**<`T`\>: (`key`: `string` \| `symbol`, `value?`: `T`, `object?`: `object`) => `unknown`
 
 #### Type parameters
 
@@ -310,7 +322,7 @@ ___
 
 #### Type declaration
 
-▸ (`key`, `value?`, `obj?`): `unknown`
+▸ (`key`, `value?`, `object?`): `unknown`
 
 ##### Parameters
 
@@ -318,7 +330,7 @@ ___
 | :------ | :------ |
 | `key` | `string` \| `symbol` |
 | `value?` | `T` |
-| `obj?` | `object` |
+| `object?` | `object` |
 
 ##### Returns
 
@@ -370,6 +382,12 @@ ___
 | :------ | :------ |
 | `name` | `string` |
 
+## Properties
+
+### plural
+
+• **plural**: `any`
+
 ## Variables
 
 ### advanced
@@ -416,7 +434,7 @@ ___
 
 ### arrayDuplicates
 
-▸ **arrayDuplicates**(`arr`, `predicate?`): `any`[]
+▸ **arrayDuplicates**(`array`, `predicate?`): `any`[]
 
 Return the duplicate values from an array
 
@@ -424,7 +442,7 @@ Return the duplicate values from an array
 
 | Name | Type |
 | :------ | :------ |
-| `arr` | `any`[] |
+| `array` | `any`[] |
 | `predicate?` | [`ArrayPredicate`](README.md#arraypredicate) |
 
 #### Returns
@@ -471,7 +489,7 @@ ___
 
 ### arrayReject
 
-▸ **arrayReject**(`arr`, `callback`): `any`[]
+▸ **arrayReject**(`array`, `callback`): `any`[]
 
 Get the reverse of a filtered array
 
@@ -479,7 +497,7 @@ Get the reverse of a filtered array
 
 | Name | Type |
 | :------ | :------ |
-| `arr` | `any`[] |
+| `array` | `any`[] |
 | `callback` | (...`args`: `any`[]) => `boolean` |
 
 #### Returns
@@ -490,7 +508,7 @@ ___
 
 ### arrayRemove
 
-▸ **arrayRemove**(`arr`, `value`): `any`[]
+▸ **arrayRemove**(`array`, `value`): `any`[]
 
 Finds and returns an element from an array, removing it in the process
 
@@ -498,7 +516,7 @@ Finds and returns an element from an array, removing it in the process
 
 | Name | Type |
 | :------ | :------ |
-| `arr` | `any`[] |
+| `array` | `any`[] |
 | `value` | `any` |
 
 #### Returns
@@ -509,7 +527,7 @@ ___
 
 ### arrayShuffle
 
-▸ **arrayShuffle**(`arr`): `any`[]
+▸ **arrayShuffle**(`array`): `any`[]
 
 Shuffles/randomizes an array
 
@@ -517,7 +535,7 @@ Shuffles/randomizes an array
 
 | Name | Type |
 | :------ | :------ |
-| `arr` | `any`[] |
+| `array` | `any`[] |
 
 #### Returns
 
@@ -527,7 +545,7 @@ ___
 
 ### arrayToObject
 
-▸ **arrayToObject**(`arr`, `key`, `value`): `object`
+▸ **arrayToObject**(`array`, `key`, `value`): `object`
 
 Convert an array to an object using the given key as the property
 
@@ -549,7 +567,7 @@ arrayToObject([{id: 1, name: 'John'}, {id: 2, name: 'Jane'}], 'name')
 
 | Name | Type |
 | :------ | :------ |
-| `arr` | `any`[] |
+| `array` | `any`[] |
 | `key` | `string` \| `number` |
 | `value` | `string` \| `number` |
 
@@ -561,7 +579,7 @@ ___
 
 ### arrayUnique
 
-▸ **arrayUnique**(`arr`, `key?`): `any`[]
+▸ **arrayUnique**(`array`, `key?`): `any`[]
 
 Returns unique values from an array. Optionally pass a key when the array is an object array.
 
@@ -569,7 +587,7 @@ Returns unique values from an array. Optionally pass a key when the array is an 
 
 | Name | Type |
 | :------ | :------ |
-| `arr` | `any`[] |
+| `array` | `any`[] |
 | `key?` | `string` |
 
 #### Returns
@@ -580,7 +598,7 @@ ___
 
 ### arrayUniqueInsensitive
 
-▸ **arrayUniqueInsensitive**(`arr`, `key?`): `any`[]
+▸ **arrayUniqueInsensitive**(`array`, `key?`): `any`[]
 
 Returns unique values from an array, ignoring case. Optionally pass a key when the array is an object array.
 
@@ -588,7 +606,7 @@ Returns unique values from an array, ignoring case. Optionally pass a key when t
 
 | Name | Type |
 | :------ | :------ |
-| `arr` | `any`[] |
+| `array` | `any`[] |
 | `key?` | `string` |
 
 #### Returns
@@ -617,7 +635,7 @@ ___
 
 ### isSingle
 
-▸ **isSingle**(`arr`, `value?`): `boolean`
+▸ **isSingle**(`array`, `value?`): `boolean`
 
 Checks if the given array only contains a single value, optionally pass a value or predicate to check against
 
@@ -625,7 +643,7 @@ Checks if the given array only contains a single value, optionally pass a value 
 
 | Name | Type |
 | :------ | :------ |
-| `arr` | `any`[] |
+| `array` | `any`[] |
 | `value?` | `any` |
 
 #### Returns
@@ -702,7 +720,7 @@ ___
 
 ### promiseAll
 
-▸ **promiseAll**(`arr`, `fn`): `Promise`<`Awaited`<`unknown`\>[]\>
+▸ **promiseAll**(`array`, `fn`): `Promise`<`Awaited`<`unknown`\>[]\>
 
 Send each item in an array to a function, await the results
 
@@ -710,7 +728,7 @@ Send each item in an array to a function, await the results
 
 | Name | Type |
 | :------ | :------ |
-| `arr` | `any`[] |
+| `array` | `any`[] |
 | `fn` | (`value`: `any`, `index`: `number`, `array`: `any`[]) => `any` |
 
 #### Returns
@@ -1013,7 +1031,7 @@ ___
 
 ### objectCopy
 
-▸ **objectCopy**<`I`\>(`obj`, `force?`): `I`
+▸ **objectCopy**<`I`\>(`object`, `force?`): `I`
 
 Copy object as JSON (uses JSON.parse/JSON.stringify but won't throw any errors)
 
@@ -1027,7 +1045,7 @@ Copy object as JSON (uses JSON.parse/JSON.stringify but won't throw any errors)
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | `I` |
+| `object` | `I` |
 | `force?` | `boolean` |
 
 #### Returns
@@ -1038,7 +1056,7 @@ ___
 
 ### objectExcept
 
-▸ **objectExcept**<`I`\>(`obj`, `excluded`): `I`
+▸ **objectExcept**<`I`\>(`object`, `excluded`): `I`
 
 Returns a new object without the excluded properties.
 
@@ -1052,7 +1070,7 @@ Returns a new object without the excluded properties.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `obj` | `I` | the object to filter |
+| `object` | `I` | the object to filter |
 | `excluded` | `string`[] | the allowed properties |
 
 #### Returns
@@ -1063,7 +1081,7 @@ ___
 
 ### objectFilter
 
-▸ **objectFilter**<`I`, `R`\>(`obj`, `predicate?`): `R`
+▸ **objectFilter**<`I`, `R`\>(`object`, `predicate?`): `R`
 
 Filter an object by a given predicate
 
@@ -1078,7 +1096,7 @@ Filter an object by a given predicate
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | `I` |
+| `object` | `I` |
 | `predicate` | [`ObjectPredicate`](README.md#objectpredicate)<`any`\> |
 
 #### Returns
@@ -1089,7 +1107,7 @@ ___
 
 ### objectFind
 
-▸ **objectFind**<`T`, `I`\>(`obj`, `predicate?`): `T` \| `undefined`
+▸ **objectFind**<`T`, `I`\>(`object`, `predicate?`): `T` \| `undefined`
 
 Finds an object property's value that matches the given predicate
 
@@ -1104,7 +1122,7 @@ Finds an object property's value that matches the given predicate
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `obj` | `I` |  |
+| `object` | `I` |  |
 | `predicate?` | `string` \| `symbol` \| [`ObjectPredicate`](README.md#objectpredicate)<`any`\> | A string or function that returns a boolean |
 
 #### Returns
@@ -1115,7 +1133,7 @@ ___
 
 ### objectFindEntry
 
-▸ **objectFindEntry**<`T`, `I`\>(`obj`, `predicate`): [`string`, `T`] \| `undefined`
+▸ **objectFindEntry**<`T`, `I`\>(`object`, `predicate`): [`string`, `T`] \| `undefined`
 
 Finds an object property's entry [key, value] that matches the given predicate
 
@@ -1130,7 +1148,7 @@ Finds an object property's entry [key, value] that matches the given predicate
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | `I` |
+| `object` | `I` |
 | `predicate` | `string` \| `symbol` \| [`ObjectPredicate`](README.md#objectpredicate)<`any`\> |
 
 #### Returns
@@ -1141,7 +1159,7 @@ ___
 
 ### objectFindKey
 
-▸ **objectFindKey**<`I`\>(`obj`, `predicate`): `string` \| `symbol` \| `undefined`
+▸ **objectFindKey**<`I`\>(`object`, `predicate`): `string` \| `symbol` \| `undefined`
 
 Finds an object property's name that matches the given predicate
 
@@ -1155,7 +1173,7 @@ Finds an object property's name that matches the given predicate
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | `I` |
+| `object` | `I` |
 | `predicate` | `string` \| `symbol` \| [`ObjectPredicate`](README.md#objectpredicate)<`any`\> |
 
 #### Returns
@@ -1166,7 +1184,7 @@ ___
 
 ### objectFlatten
 
-▸ **objectFlatten**<`I`\>(`obj`, `prefix?`): `I`
+▸ **objectFlatten**<`I`\>(`object`, `prefix?`): `I`
 
 Flattens an object into a single level using dot notation for nested properties.
 
@@ -1180,7 +1198,7 @@ Flattens an object into a single level using dot notation for nested properties.
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `obj` | `I` | `undefined` |
+| `object` | `I` | `undefined` |
 | `prefix` | `string` | `''` |
 
 #### Returns
@@ -1191,7 +1209,7 @@ ___
 
 ### objectGetMethod
 
-▸ **objectGetMethod**<`T`, `I`\>(`obj`, `method`, `strict?`): `T` \| `undefined`
+▸ **objectGetMethod**<`T`, `I`\>(`object`, `method`, `strict?`): `T` \| `undefined`
 
 Checks if an object has a method with the given name, and returns the method
 
@@ -1206,7 +1224,7 @@ Checks if an object has a method with the given name, and returns the method
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | `I` |
+| `object` | `I` |
 | `method` | `string` |
 | `strict?` | `boolean` |
 
@@ -1218,7 +1236,7 @@ ___
 
 ### objectHasMethod
 
-▸ **objectHasMethod**<`I`\>(`obj`, `method`, `strict?`): `boolean`
+▸ **objectHasMethod**<`I`\>(`object`, `method`, `strict?`): `boolean`
 
 Checks if an object has a method with the given name
 
@@ -1232,7 +1250,7 @@ Checks if an object has a method with the given name
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | `I` |
+| `object` | `I` |
 | `method` | `string` |
 | `strict?` | `boolean` |
 
@@ -1292,7 +1310,7 @@ ___
 
 ### objectMethods
 
-▸ **objectMethods**<`I`\>(`obj`): `string`[]
+▸ **objectMethods**<`I`\>(`object`): `string`[]
 
 Returns an array of the given object's available method names
 
@@ -1306,7 +1324,7 @@ Returns an array of the given object's available method names
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | `I` |
+| `object` | `I` |
 
 #### Returns
 
@@ -1316,7 +1334,7 @@ ___
 
 ### objectOnly
 
-▸ **objectOnly**<`I`\>(`obj`, `allowed`): `I`
+▸ **objectOnly**<`I`\>(`object`, `allowed`): `I`
 
 Returns a new object with only the allowed properties.
 
@@ -1330,7 +1348,7 @@ Returns a new object with only the allowed properties.
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | `I` |
+| `object` | `I` |
 | `allowed` | `string`[] |
 
 #### Returns
@@ -1341,7 +1359,7 @@ ___
 
 ### objectPull
 
-▸ **objectPull**<`I`\>(`obj`, `key`): `any`
+▸ **objectPull**<`I`\>(`object`, `key`): `any`
 
 Remove a property from an object and return the value
 
@@ -1355,7 +1373,7 @@ Remove a property from an object and return the value
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | `I` |
+| `object` | `I` |
 | `key` | `string` |
 
 #### Returns
@@ -1366,7 +1384,7 @@ ___
 
 ### objectSort
 
-▸ **objectSort**<`I`\>(`obj`): `I`
+▸ **objectSort**<`I`\>(`object`): `I`
 
 Sort an object by it's keys
 
@@ -1380,13 +1398,13 @@ Sort an object by it's keys
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | `I` |
+| `object` | `I` |
 
 #### Returns
 
 `I`
 
-▸ **objectSort**<`I`\>(`obj`, `sortFn`): `I`
+▸ **objectSort**<`I`\>(`object`, `sortFunction`): `I`
 
 Sort an object by a predicate
 
@@ -1400,8 +1418,8 @@ Sort an object by a predicate
 
 | Name | Type |
 | :------ | :------ |
-| `obj` | `I` |
-| `sortFn` | (`a`: [`string`, `unknown`], `b`: [`string`, `unknown`]) => `number` |
+| `object` | `I` |
+| `sortFunction` | (`a`: [`string`, `unknown`], `b`: [`string`, `unknown`]) => `number` |
 
 #### Returns
 
@@ -1504,7 +1522,7 @@ ___
 
 ### initials
 
-▸ **initials**(`str`): `string`
+▸ **initials**(`text`): `string`
 
 Convert a string to initials
 
@@ -1512,7 +1530,7 @@ Convert a string to initials
 
 | Name | Type |
 | :------ | :------ |
-| `str` | `string` |
+| `text` | `string` |
 
 #### Returns
 
@@ -1540,7 +1558,7 @@ ___
 
 ### limitString
 
-▸ **limitString**(`str`, `limit?`, `suffix?`): `string`
+▸ **limitString**(`text`, `limit?`, `suffix?`): `string`
 
 Limit a string to a certain length
 
@@ -1548,7 +1566,7 @@ Limit a string to a certain length
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `str` | `string` | `undefined` |
+| `text` | `string` | `undefined` |
 | `limit` | `number` | `100` |
 | `suffix` | `string` | `'...'` |
 
@@ -1560,7 +1578,7 @@ ___
 
 ### limitWords
 
-▸ **limitWords**(`str`, `limit?`, `suffix?`): `string`
+▸ **limitWords**(`text`, `limit?`, `suffix?`): `string`
 
 Limit a string to a certain amount of words
 
@@ -1568,7 +1586,7 @@ Limit a string to a certain amount of words
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `str` | `string` | `undefined` |
+| `text` | `string` | `undefined` |
 | `limit` | `number` | `100` |
 | `suffix` | `string` | `'...'` |
 
@@ -1622,44 +1640,9 @@ Parse a string into it's primitive type if possible. If not, return the original
 
 ___
 
-### plural
-
-▸ **plural**(`word`, `count?`): `any`
-
-Create a pluralized string
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `word` | `string` |
-| `count?` | `number` |
-
-#### Returns
-
-`any`
-
-▸ **plural**(`word`, `pluralized`, `count?`): `any`
-
-Create a pluralized string
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `word` | `string` |
-| `pluralized` | `string` |
-| `count?` | `number` |
-
-#### Returns
-
-`any`
-
-___
-
 ### safeVarName
 
-▸ **safeVarName**(`str`, `replacer?`): `string`
+▸ **safeVarName**(`text`, `replacer?`): `string`
 
 Create a safe javascript variable name from a string
 
@@ -1667,47 +1650,12 @@ Create a safe javascript variable name from a string
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `str` | `string` | `undefined` |
+| `text` | `string` | `undefined` |
 | `replacer` | `string` | `''` |
 
 #### Returns
 
 `string`
-
-___
-
-### singular
-
-▸ **singular**(`word`, `count?`): `any`
-
-Create a singularized string
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `word` | `string` |
-| `count?` | `number` |
-
-#### Returns
-
-`any`
-
-▸ **singular**(`word`, `singularized`, `count?`): `any`
-
-Create a singularized string
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `word` | `string` |
-| `singularized` | `string` |
-| `count?` | `number` |
-
-#### Returns
-
-`any`
 
 ___
 
@@ -1768,7 +1716,7 @@ ___
 
 ### spaceCase
 
-▸ **spaceCase**(`str`): `string`
+▸ **spaceCase**(`text`): `string`
 
 Convert a string to space-case
 
@@ -1776,7 +1724,7 @@ Convert a string to space-case
 
 | Name | Type |
 | :------ | :------ |
-| `str` | `string` |
+| `text` | `string` |
 
 #### Returns
 
@@ -1788,7 +1736,7 @@ ___
 
 ### escapeRegExp
 
-▸ **escapeRegExp**(`str`): `string`
+▸ **escapeRegExp**(`text`): `string`
 
 escape regexp
 
@@ -1796,7 +1744,7 @@ escape regexp
 
 | Name | Type |
 | :------ | :------ |
-| `str` | `string` |
+| `text` | `string` |
 
 #### Returns
 
@@ -1806,7 +1754,7 @@ ___
 
 ### escapeReplacement
 
-▸ **escapeReplacement**(`str`): `string`
+▸ **escapeReplacement**(`text`): `string`
 
 escape regexp replacement string
 
@@ -1814,7 +1762,7 @@ escape regexp replacement string
 
 | Name | Type |
 | :------ | :------ |
-| `str` | `string` |
+| `text` | `string` |
 
 #### Returns
 
@@ -1824,7 +1772,7 @@ ___
 
 ### interpolate
 
-▸ **interpolate**(`str`, `replacements`): `string`
+▸ **interpolate**(`text`, `replacements`): `string`
 
 interpolate string with data from object using `{{key}}` syntax or `${key}` syntax
 
@@ -1832,7 +1780,7 @@ interpolate string with data from object using `{{key}}` syntax or `${key}` synt
 
 | Name | Type |
 | :------ | :------ |
-| `str` | `string` |
+| `text` | `string` |
 | `replacements` | [`interpolateReplacements`](README.md#interpolatereplacements) |
 
 #### Returns
