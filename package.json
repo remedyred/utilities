@@ -22,7 +22,7 @@
 		"docs": "typedoc",
 		"index": "indexer",
 		"meta": "tsup --minify --metafile",
-		"release": "semantic-release",
+		"release": "semantic-release --dry-run",
 		"test": "jest",
 		"watch": "pnpm run dev --watch"
 	},
