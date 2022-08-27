@@ -1993,7 +1993,7 @@ ___
 
 ### isEmpty
 
-▸ **isEmpty**(`value`): value is undefined \| null \| EmptyObject
+▸ **isEmpty**(`value`): value is EmptyObject
 
 Check if a value is empty
 
@@ -2005,7 +2005,7 @@ Check if a value is empty
 
 #### Returns
 
-value is undefined \| null \| EmptyObject
+value is EmptyObject
 
 ▸ **isEmpty**(`value`): value is ""
 
@@ -2067,7 +2067,7 @@ ___
 
 ### isNullDefined
 
-▸ **isNullDefined**(`value`): value is undefined \| null
+▸ **isNullDefined**(`value`): value is null
 
 Check if a value is null or undefined
 
@@ -2079,7 +2079,7 @@ Check if a value is null or undefined
 
 #### Returns
 
-value is undefined \| null
+value is null
 
 ___
 
@@ -2118,7 +2118,7 @@ Check if a variable is an object and is not null or undefined
 
 value is Record<any, any\>
 
-▸ **isObject**(`value`, `strict`): value is Date \| AnyFunction<any\> \| Record<any, any\> \| [any, ...any[]]
+▸ **isObject**(`value`, `strict`): value is Date \| Record<any, any\> \| AnyFunction<any\> \| [any, ...any[]]
 
 #### Parameters
 
@@ -2129,7 +2129,7 @@ value is Record<any, any\>
 
 #### Returns
 
-value is Date \| AnyFunction<any\> \| Record<any, any\> \| [any, ...any[]]
+value is Date \| Record<any, any\> \| AnyFunction<any\> \| [any, ...any[]]
 
 ___
 
