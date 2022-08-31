@@ -19,7 +19,7 @@
 		"clean": "shx rm -rf ./dist ./.types",
 		"depcheck": "depcheck",
 		"dev": "indexer && tsup",
-		"docs": "typedoc",
+		"docs": "typedoc src/index.ts",
 		"index": "indexer",
 		"release": "semantic-release",
 		"test": "jest",
