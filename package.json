@@ -15,13 +15,12 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "indexer && tsup --minify",
+		"build": "indexer && tsup --minify --dts",
 		"clean": "shx rm -rf ./dist ./.types",
 		"depcheck": "depcheck",
 		"dev": "indexer && tsup",
 		"docs": "typedoc",
 		"index": "indexer",
-		"meta": "tsup --minify --metafile",
 		"release": "semantic-release",
 		"test": "jest",
 		"watch": "pnpm run dev --watch"
