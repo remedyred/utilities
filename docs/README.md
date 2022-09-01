@@ -2118,7 +2118,7 @@ Check if a variable is an object and is not null or undefined
 
 value is Record<any, any\>
 
-▸ **isObject**(`value`, `strict`): value is Date \| Record<any, any\> \| AnyFunction<any\> \| [any, ...any[]]
+▸ **isObject**(`value`, `strict`): value is AnyFunction<any\> \| Record<any, any\> \| [any, ...any[]] \| Date
 
 #### Parameters
 
@@ -2129,7 +2129,7 @@ value is Record<any, any\>
 
 #### Returns
 
-value is Date \| Record<any, any\> \| AnyFunction<any\> \| [any, ...any[]]
+value is AnyFunction<any\> \| Record<any, any\> \| [any, ...any[]] \| Date
 
 ___
 
