@@ -1,6 +1,6 @@
 {
 	"name": "@snickbit/utilities",
-	"version": "3.4.5",
+	"version": "3.4.6",
 	"description": "A collection of simple JavaScript helpers",
 	"license": "MIT",
 	"exports": {
