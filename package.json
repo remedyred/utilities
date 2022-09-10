@@ -15,14 +15,18 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "indexer && tsup --minify --dts",
+		"build": "pnpm run clean && indexer && tsup --minify --dts",
 		"clean": "shx rm -rf ./dist ./.types",
 		"depcheck": "depcheck",
-		"dev": "indexer && tsup",
+		"dev": "indexer && concurrently -c magenta,cyan pnpm:dev:*",
+		"dev:build": "tsup",
+		"dev:types": "tsc --project tsconfig.types.json",
 		"docs": "typedoc src/index.ts --tsconfig ./tsconfig.typedoc.json",
 		"index": "indexer",
 		"release": "semantic-release",
-		"watch": "pnpm run dev --watch"
+		"watch": "indexer && concurrently -k -c magenta,cyan pnpm:watch:*",
+		"watch:build": "pnpm run dev:build --watch",
+		"watch:types": "pnpm run dev:types --watch"
 	},
 	"release": {
 		"extends": [
