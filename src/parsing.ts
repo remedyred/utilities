@@ -14,18 +14,24 @@ export function parse(value: any): any {
 	}
 
 	switch (value) {
-		case 'undefined':
+		case 'undefined': {
 			return undefined
-		case 'null':
+		}
+		case 'null': {
 			return null
-		case 'NaN':
+		}
+		case 'NaN': {
 			return Number.NaN
-		case 'Infinity':
+		}
+		case 'Infinity': {
 			return Number.POSITIVE_INFINITY
-		case 'true':
+		}
+		case 'true': {
 			return true
-		case 'false':
+		}
+		case 'false': {
 			return false
+		}
 	}
 
 	if (isJSONString(value)) {

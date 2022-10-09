@@ -338,7 +338,21 @@ ___
 
 ### AnyClass
 
-Ƭ **AnyClass**: `Object`
+Ƭ **AnyClass**: (...`args`: `any`[]) => [`AnyClass`](README.md#anyclass)
+
+#### Type declaration
+
+• **new AnyClass**(...`args`): [`AnyClass`](README.md#anyclass)
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `...args` | `any`[] |
+
+##### Returns
+
+[`AnyClass`](README.md#anyclass)
 
 ___
 
