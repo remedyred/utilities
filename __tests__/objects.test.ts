@@ -1,5 +1,23 @@
 /* eslint-disable unicorn/consistent-function-scoping */
-import {objectClone, objectCopy, objectExcept, objectFilter, objectFind, objectFindEntry, objectFindKey, objectFlatten, objectGetMethod, objectHasMethod, objectMerge, objectMergeDeep, objectMethods, objectOnly, ObjectPredicate, objectPull, objectSort} from '../src'
+import {
+	objectClone,
+	objectCopy,
+	objectExcept,
+	objectFilter,
+	objectFind,
+	objectFindEntry,
+	objectFindKey,
+	objectFlatten,
+	objectGetMethod,
+	objectHasMethod,
+	objectMerge,
+	objectMergeDeep,
+	objectMethods,
+	objectOnly,
+	ObjectPredicate,
+	objectPull,
+	objectSort
+} from '../src'
 
 const mockPlainObject = {
 	a: 1,

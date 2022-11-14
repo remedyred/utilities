@@ -103,10 +103,10 @@ export function merge(...values: any[] | IObject[]): any[] | IObject {
 				toReturn = value
 				returnType = typeOf(value)
 			} else if (returnType === 'array') {
-				toReturn = toReturn || []
+				toReturn ||= []
 				toReturn = arrayMerge(toReturn, value)
 			} else if (returnType === 'object') {
-				toReturn = toReturn || {}
+				toReturn ||= {}
 				toReturn = objectMerge(toReturn, value)
 			} else {
 				toReturn = value
@@ -129,10 +129,10 @@ export function mergeDeep(...values: any[] | IObject[]): any[] | IObject {
 				toReturn = value
 				returnType = typeOf(value)
 			} else if (returnType === 'array') {
-				toReturn = toReturn || []
+				toReturn ||= []
 				toReturn = arrayMergeDeep(toReturn, value)
 			} else if (returnType === 'object') {
-				toReturn = toReturn || {}
+				toReturn ||= {}
 				toReturn = objectMergeDeep(toReturn, value)
 			} else {
 				toReturn = value

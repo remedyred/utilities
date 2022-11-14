@@ -21,13 +21,19 @@ export function isSingle(array: any[], predicate?: ArrayPredicate): boolean {
  * Returns unique values from an array. Optionally pass a key when the array is an object array.
  * @category Arrays
  */
-export const arrayUnique = (array: any[], key?: string): any[] => array.filter((value, index, self) => (key ? self.findIndex(item => item[key] === value[key]) : self.indexOf(value)) === index)
+export function arrayUnique(array: any[], key?: string): any[] {
+	return array.filter((value, index, self) => (key ? self.findIndex(item => item[key] === value[key]) : self.indexOf(value)) === index)
+}
 
 /**
  * Returns unique values from an array, ignoring case. Optionally pass a key when the array is an object array.
  * @category Arrays
  */
-export const arrayUniqueInsensitive = (array: any[], key?: string): any[] => array.filter((value, index, self) => (key ? self.findIndex(item => item[key].toLowerCase() === value[key].toLowerCase()) : self.findIndex(item => item.toLowerCase() === value.toLowerCase())) === index)
+export function arrayUniqueInsensitive(array: any[], key?: string): any[] {
+	return array.filter((value, index, self) => (key
+		? self.findIndex(item => item[key].toLowerCase() === value[key].toLowerCase())
+		: self.findIndex(item => item.toLowerCase() === value.toLowerCase())) === index)
+}
 
 /**
  * Convert an array to an object using the given key as the property
@@ -55,7 +61,7 @@ export const arrayWrap = (values: any[] | any): any[] => Array.isArray(values) ?
 export function arrayDuplicates(array: any[], predicate?: ArrayPredicate): any[] {
 	const unique: any[] = [],
 		duplicates: any[] = []
-	predicate = predicate || (value => value)
+	predicate ||= (value => value)
 	for (const item of array) {
 		if (unique.includes(predicate(item))) {
 			duplicates.push(item)

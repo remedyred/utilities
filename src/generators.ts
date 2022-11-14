@@ -34,7 +34,8 @@ export function makeRandomSegment(): string {
 export type CombinationOptions = Record<string, any[]>
 
 /**
- * Generate an array of all possible property values. Provide an object with each property as a key and an array of possible values as the value.
+ * Generate an array of all possible property values.
+ * Provide an object with each property as a key and an array of possible values as the value.
  * @category Generators
  */
 export function combinations(options: CombinationOptions): any[] {
