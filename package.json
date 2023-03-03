@@ -17,7 +17,6 @@
 	"scripts": {
 		"build": "pnpm run clean && indexer && tsup --minify",
 		"clean": "shx rm -rf ./dist",
-		"depcheck": "depcheck",
 		"dev": "indexer && concurrently -c magenta,cyan pnpm:dev:*",
 		"dev:build": "tsup",
 		"docs": "typedoc src/index.ts --tsconfig ./tsconfig.typedoc.json",
