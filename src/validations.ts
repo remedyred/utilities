@@ -33,7 +33,7 @@ export type AnyClass = {
  * @category Validation
  */
 export function isDefined(value: any): value is undefined {
-	return typeof value !== 'undefined' && value !== undefined
+	return value !== undefined && value !== undefined
 }
 
 /**
@@ -78,7 +78,7 @@ export const isAwaitable = <T = any>(value: any): value is AsyncFunction<T> | Pr
 export function isPrimitive(value: any, includeNullUndefined: true): value is BasicVariableType
 export function isPrimitive(value: any, includeNullUndefined?: false): value is PrimitiveVariableType
 export function isPrimitive(value: any, includeNullUndefined?: boolean): value is BasicVariableType | PrimitiveVariableType {
-	return !includeNullUndefined ? variableTypes.basic.includes(<BasicVariableType>typeOf(value)) : variableTypes.primitive.includes(<PrimitiveVariableType>typeOf(value))
+	return includeNullUndefined ? variableTypes.primitive.includes(<PrimitiveVariableType>typeOf(value)) : variableTypes.basic.includes(<BasicVariableType>typeOf(value))
 }
 
 /**
