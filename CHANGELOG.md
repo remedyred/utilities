@@ -1,3 +1,21 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## @snickbit/utilities [3.4.19](https://github.com/remedyred/snickbit.js/compare/@snickbit/utilities@3.4.18...@snickbit/utilities@3.4.19) (2023-03-03)
+
+
+### Bug Fixes
+
+* remove depcheck ([#119](https://github.com/remedyred/snickbit.js/issues/119)) ([0fb970f](https://github.com/remedyred/snickbit.js/commit/0fb970fe23d85f4e678fbdca577c877b059a86fb))
+
+
+
+### Dependencies
+
+* **@snickbit/plural:** upgraded to 1.0.13
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
