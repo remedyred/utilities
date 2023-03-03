@@ -10,7 +10,7 @@
 
 ### AnyFunction
 
-▸ **AnyFunction**(...`args`): `T`
+▸ **AnyFunction**(`...args`): `T`
 
 #### Parameters
 

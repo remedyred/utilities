@@ -238,7 +238,7 @@ ___
 
 #### Type declaration
 
-▸ (...`args`): `any`
+▸ (`...args`): `any`
 
 ##### Parameters
 
@@ -270,7 +270,7 @@ ___
 
 #### Type declaration
 
-▸ (...`args`): `Promise`<`any`\> \| `any`
+▸ (`...args`): `Promise`<`any`\> \| `any`
 
 ##### Parameters
 
@@ -342,7 +342,7 @@ ___
 
 #### Type declaration
 
-• **new AnyClass**(...`args`): [`AnyClass`](README.md#anyclass)
+• **new AnyClass**(`...args`): [`AnyClass`](README.md#anyclass)
 
 ##### Parameters
 
@@ -449,7 +449,7 @@ ___
 
 ### arrayMerge
 
-▸ **arrayMerge**(...`arrs`): `any`[]
+▸ **arrayMerge**(`...arrs`): `any`[]
 
 Merge two or more arrays together
 
@@ -467,7 +467,7 @@ ___
 
 ### arrayMergeDeep
 
-▸ **arrayMergeDeep**(...`arrs`): `any`[]
+▸ **arrayMergeDeep**(`...arrs`): `any`[]
 
 Merge two or more arrays together, recursing child values
 
@@ -735,7 +735,7 @@ ___
 
 ### tryWait
 
-▸ **tryWait**(`fn`, ...`args`): `Promise`<`any`\>
+▸ **tryWait**(`fn`, `...args`): `Promise`<`any`\>
 
 Catch an async function or promise and force it to resolve, returning undefined if it fails
 
@@ -1066,7 +1066,7 @@ ___
 
 ### objectClone
 
-▸ **objectClone**<`I`\>(...`objects`): `I`
+▸ **objectClone**<`I`\>(`...objects`): `I`
 
 Deep clones an object
 
@@ -1321,7 +1321,7 @@ ___
 
 ### objectMerge
 
-▸ **objectMerge**<`I`\>(...`objects`): `I`
+▸ **objectMerge**<`I`\>(`...objects`): `I`
 
 Merge two or more objects together
 
@@ -1345,7 +1345,7 @@ ___
 
 ### objectMergeDeep
 
-▸ **objectMergeDeep**<`I`\>(...`objects`): `I`
+▸ **objectMergeDeep**<`I`\>(`...objects`): `I`
 
 Merge two or more objects together, recursing child values
 
@@ -2347,7 +2347,7 @@ ___
 
 ### merge
 
-▸ **merge**(...`values`): `any`[] \| [`IObject`](README.md#iobject)
+▸ **merge**(`...values`): `any`[] \| [`IObject`](README.md#iobject)
 
 Merge two or more variables together
 
@@ -2365,7 +2365,7 @@ ___
 
 ### mergeDeep
 
-▸ **mergeDeep**(...`values`): `any`[] \| [`IObject`](README.md#iobject)
+▸ **mergeDeep**(`...values`): `any`[] \| [`IObject`](README.md#iobject)
 
 Merge two or more variables together, recursing child values
 

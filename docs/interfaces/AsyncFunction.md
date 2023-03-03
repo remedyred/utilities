@@ -10,7 +10,7 @@
 
 ### AsyncFunction
 
-▸ **AsyncFunction**(...`args`): `Promise`<`T`\>
+▸ **AsyncFunction**(`...args`): `Promise`<`T`\>
 
 #### Parameters
 
