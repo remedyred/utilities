@@ -116,6 +116,7 @@
 - [objectMergeDeep](README.md#objectmergedeep)
 - [objectMethods](README.md#objectmethods)
 - [objectOnly](README.md#objectonly)
+- [objectOverwrite](README.md#objectoverwrite)
 - [objectPull](README.md#objectpull)
 - [objectSort](README.md#objectsort)
 
@@ -1409,6 +1410,32 @@ Returns a new object with only the allowed properties.
 | :------ | :------ |
 | `object` | `I` |
 | `allowed` | `string`[] |
+
+#### Returns
+
+`I`
+
+___
+
+### objectOverwrite
+
+▸ **objectOverwrite**<`I`\>(`object`, `...objects`): `I`
+
+Shallow merges multiple objects together, overwriting earlier objects' values with later objects' values.
+Null and undefined values from later objects are ignored, and not copied over.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `I` | extends `object` = [`IObject`](README.md#iobject) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `object` | `I` |
+| `...objects` | [`IObject`](README.md#iobject)[] |
 
 #### Returns
 
