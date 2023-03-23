@@ -255,3 +255,19 @@ export function objectSort<I extends object = IObject>(object: I, sortFunction?:
 	}
 	return toReturn
 }
+
+/**
+ * Shallow merges multiple objects together, overwriting earlier objects' values with later objects' values.
+ * Null and undefined values from later objects are ignored, and not copied over.
+ * @category Objects
+ */
+export function objectOverwrite<I extends object = IObject>(object: I, ...objects: IObject[]): I {
+	for (const objectToMerge of objects) {
+		for (const [key, value] of Object.entries(objectToMerge)) {
+			if (value !== undefined && value !== null) {
+				object[key] = value
+			}
+		}
+	}
+	return object
+}
