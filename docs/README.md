@@ -62,6 +62,7 @@
 - [arrayReject](README.md#arrayreject)
 - [arrayRemove](README.md#arrayremove)
 - [arrayShuffle](README.md#arrayshuffle)
+- [arrayToKeyValue](README.md#arraytokeyvalue)
 - [arrayToObject](README.md#arraytoobject)
 - [arrayUnique](README.md#arrayunique)
 - [arrayUniqueInsensitive](README.md#arrayuniqueinsensitive)
@@ -537,6 +538,30 @@ Shuffles/randomizes an array
 #### Returns
 
 `any`[]
+
+___
+
+### arrayToKeyValue
+
+▸ **arrayToKeyValue**<`TValue`\>(`array`): `Object`
+
+Turn an array of two value arrays into an object of key/value pairs
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `TValue` | `any` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `array` | [`string` \| `number` \| `symbol`, `TValue`][] |
+
+#### Returns
+
+`Object`
 
 ___
 

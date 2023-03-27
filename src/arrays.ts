@@ -142,3 +142,16 @@ export function arrayMergeDeep(...arrs: any[][]): any[] {
 export function arrayReject(array: any[], callback: (...args: any[]) => boolean): any[] {
 	return array.filter((...args: any[]) => !callback.apply(array, args))
 }
+
+/**
+ * Turn an array of two value arrays into an object of key/value pairs
+ * @category Arrays
+ */
+export function arrayToKeyValue<TValue = any>(array: [number | string | symbol, TValue][]): {[key: string]: TValue} {
+	const result: {[key: string]: any} = {}
+	for (const [key, value] of array) {
+		result[String(key)] = value
+	}
+	return result
+}
+
