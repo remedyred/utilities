@@ -22,7 +22,7 @@ export function isSingle(array: any[], predicate?: ArrayPredicate): boolean {
  * @category Arrays
  */
 export function arrayUnique(array: any[], key?: string): any[] {
-	return array.filter((value, index, self) => (key ? self.findIndex(item => item[key] === value[key]) : self.indexOf(value)) === index)
+	return [...new Set(array.map(item => key ? item[key] : item))]
 }
 
 /**
@@ -30,9 +30,7 @@ export function arrayUnique(array: any[], key?: string): any[] {
  * @category Arrays
  */
 export function arrayUniqueInsensitive(array: any[], key?: string): any[] {
-	return array.filter((value, index, self) => (key
-		? self.findIndex(item => item[key].toLowerCase() === value[key].toLowerCase())
-		: self.findIndex(item => item.toLowerCase() === value.toLowerCase())) === index)
+	return [...new Set(array.map(item => key ? item[key].toLowerCase() : item.toLowerCase()))]
 }
 
 /**
