@@ -72,6 +72,8 @@
 ### Functions Functions
 
 - [debounce](README.md#debounce)
+- [debounceAsync](README.md#debounceasync)
+- [debouncePromise](README.md#debouncepromise)
 - [functionClone](README.md#functionclone)
 - [overloadOptions](README.md#overloadoptions)
 - [parseOptions](README.md#parseoptions)
@@ -711,6 +713,84 @@ Debounce a function
 ##### Returns
 
 `void`
+
+___
+
+### debounceAsync
+
+▸ **debounceAsync**<`F`\>(`fn`, `delay?`): (...`args`: `Parameters`<`F`\>) => `Promise`<`unknown`\>
+
+Debounce a function that returns a promise
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `F` | extends (...`args`: `Parameters`<`F`\>) => `Promise`<`ReturnType`<`F`\>\> |
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `fn` | `F` | `undefined` |
+| `delay` | `number` | `50` |
+
+#### Returns
+
+`fn`
+
+▸ (`...args`): `Promise`<`unknown`\>
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `...args` | `Parameters`<`F`\> |
+
+##### Returns
+
+`Promise`<`unknown`\>
+
+___
+
+### debouncePromise
+
+▸ **debouncePromise**<`F`\>(`fn`, `delay?`): (...`args`: `Parameters`<`F`\>) => `Promise`<`unknown`\>
+
+Debounce a function that returns a promise
+
+**`Alias`**
+
+debounceAsync
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `F` | extends (...`args`: `Parameters`<`F`\>) => `Promise`<`ReturnType`<`F`\>\> |
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `fn` | `F` | `undefined` |
+| `delay` | `number` | `50` |
+
+#### Returns
+
+`fn`
+
+▸ (`...args`): `Promise`<`unknown`\>
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `...args` | `Parameters`<`F`\> |
+
+##### Returns
+
+`Promise`<`unknown`\>
 
 ___
 
