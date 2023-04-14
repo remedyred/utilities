@@ -71,6 +71,7 @@
 
 ### Functions Functions
 
+- [debounce](README.md#debounce)
 - [functionClone](README.md#functionclone)
 - [overloadOptions](README.md#overloadoptions)
 - [parseOptions](README.md#parseoptions)
@@ -675,6 +676,43 @@ Checks if the given array only contains a single value, optionally pass a value 
 ___
 
 ## Functions Functions
+
+### debounce
+
+▸ **debounce**<`F`\>(`fn`, `delay?`): (...`args`: `Parameters`<`F`\>) => `void`
+
+Debounce a function
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `F` | extends (...`args`: `Parameters`<`F`\>) => `ReturnType`<`F`\> |
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `fn` | `F` | `undefined` |
+| `delay` | `number` | `50` |
+
+#### Returns
+
+`fn`
+
+▸ (`...args`): `void`
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `...args` | `Parameters`<`F`\> |
+
+##### Returns
+
+`void`
+
+___
 
 ### functionClone
 
