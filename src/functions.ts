@@ -117,3 +117,17 @@ export function overloadOptions(options: any[], schemas: OverloadSchema[]): obje
 
 	return results
 }
+
+/**
+ * Debounce a function
+ * @category Functions
+ */
+export function debounce<F extends (...args: Parameters<F>) => ReturnType<F>>(fn: F, delay = 50) {
+	let timeout: ReturnType<typeof setTimeout>
+	return function(...args: Parameters<F>) {
+		clearTimeout(timeout)
+		timeout = setTimeout(() => {
+			fn.apply(this, args)
+		}, delay)
+	}
+}
