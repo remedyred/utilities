@@ -133,10 +133,10 @@ export function debounce<F extends (...args: Parameters<F>) => ReturnType<F>>(fn
 }
 
 /**
- * Debounce a function that returns a promise
+ * Debounce a function asynchronously, returning a promise
  * @category Functions
  */
-export function debounceAsync<F extends (...args: Parameters<F>) => Promise<ReturnType<F>>>(fn: F, delay = 50) {
+export function debounceAsync<F extends (...args: Parameters<F>) => ReturnType<F>>(fn: F, delay = 50) {
 	let timeoutId: ReturnType<typeof setTimeout>
 	const pending: {resolve(value: unknown): void; reject(reason?: any): void}[] = []
 	return (...args: Parameters<F>) => new Promise((resolve, reject) => {
@@ -160,7 +160,7 @@ export function debounceAsync<F extends (...args: Parameters<F>) => Promise<Retu
 }
 
 /**
- * Debounce a function that returns a promise
+ * Debounce a function asynchronously, returning a promise
  * @alias debounceAsync
  * @category Functions
  */
