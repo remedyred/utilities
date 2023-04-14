@@ -720,13 +720,13 @@ ___
 
 ▸ **debounceAsync**<`F`\>(`fn`, `delay?`): (...`args`: `Parameters`<`F`\>) => `Promise`<`unknown`\>
 
-Debounce a function that returns a promise
+Debounce a function asynchronously, returning a promise
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `F` | extends (...`args`: `Parameters`<`F`\>) => `Promise`<`ReturnType`<`F`\>\> |
+| `F` | extends (...`args`: `Parameters`<`F`\>) => `ReturnType`<`F`\> |
 
 #### Parameters
 
@@ -757,7 +757,7 @@ ___
 
 ▸ **debouncePromise**<`F`\>(`fn`, `delay?`): (...`args`: `Parameters`<`F`\>) => `Promise`<`unknown`\>
 
-Debounce a function that returns a promise
+Debounce a function asynchronously, returning a promise
 
 **`Alias`**
 
@@ -767,7 +767,7 @@ debounceAsync
 
 | Name | Type |
 | :------ | :------ |
-| `F` | extends (...`args`: `Parameters`<`F`\>) => `Promise`<`ReturnType`<`F`\>\> |
+| `F` | extends (...`args`: `Parameters`<`F`\>) => `ReturnType`<`F`\> |
 
 #### Parameters
 
