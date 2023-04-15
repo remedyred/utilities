@@ -1,7 +1,7 @@
 import {arrayUnique} from './arrays'
 import {VariableType} from './data/variable-types'
 import {IObject} from './objects'
-import {isArray, isObject, isType} from './validations'
+import {AnyFunction, isArray, isObject, isType} from './validations'
 
 /**
  * Parse options for a function
@@ -40,7 +40,7 @@ export function parseOptions(given: IObject | any, defaults: IObject, non_object
 	return given
 }
 
-export type FunctionType = (...args: any[]) => any
+type TFunction<F extends AnyFunction = AnyFunction> = (...args: Parameters<F>) => ReturnType<F>
 
 export type TryWaitFunction = (...args: any[]) => Promise<any> | any
 
@@ -64,7 +64,7 @@ export function tryWait(fn: TryWaitFunction, ...args: any[][]): Promise<any> {
  * Clone a function
  * @category Functions
  */
-export function functionClone(fn: FunctionType): FunctionType {
+export function functionClone<F>(fn: TFunction): TFunction {
 	return function(...args: any[]): any {
 		return fn.apply(this, ...args)
 	}
@@ -121,8 +121,10 @@ export function overloadOptions(options: any[], schemas: OverloadSchema[]): obje
 /**
  * Debounce a function
  * @category Functions
+ * @param {TFunction} fn - The function to debounce
+ * @param {number} [delay=50] - The delay in milliseconds
  */
-export function debounce<F extends (...args: Parameters<F>) => ReturnType<F>>(fn: F, delay = 50) {
+export function debounce<F extends TFunction>(fn: F, delay = 50) {
 	let timeout: ReturnType<typeof setTimeout>
 	return function(...args: Parameters<F>) {
 		clearTimeout(timeout)
@@ -135,8 +137,10 @@ export function debounce<F extends (...args: Parameters<F>) => ReturnType<F>>(fn
 /**
  * Debounce a function asynchronously, returning a promise
  * @category Functions
+ * @param {TFunction} fn - The function to debounce
+ * @param {number} [delay=50] - The delay in milliseconds
  */
-export function debounceAsync<F extends (...args: Parameters<F>) => ReturnType<F>>(fn: F, delay = 50) {
+export function debounceAsync<F extends TFunction>(fn: F, delay = 50) {
 	let timeoutId: ReturnType<typeof setTimeout>
 	const pending: {resolve(value: unknown): void; reject(reason?: any): void}[] = []
 	return (...args: Parameters<F>) => new Promise((resolve, reject) => {

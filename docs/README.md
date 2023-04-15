@@ -21,7 +21,6 @@
 - [BasicVariableType](README.md#basicvariabletype)
 - [CallableVariableType](README.md#callablevariabletype)
 - [EmptyVariableType](README.md#emptyvariabletype)
-- [FunctionType](README.md#functiontype)
 - [OverloadSchema](README.md#overloadschema)
 - [PrimitiveVariableType](README.md#primitivevariabletype)
 - [TryWaitFunction](README.md#trywaitfunction)
@@ -234,26 +233,6 @@ ___
 ### EmptyVariableType
 
 Ƭ **EmptyVariableType**: ``"null"`` \| ``"undefined"``
-
-___
-
-### FunctionType
-
-Ƭ **FunctionType**: (...`args`: `any`[]) => `any`
-
-#### Type declaration
-
-▸ (`...args`): `any`
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `...args` | `any`[] |
-
-##### Returns
-
-`any`
 
 ___
 
@@ -689,14 +668,14 @@ Debounce a function
 
 | Name | Type |
 | :------ | :------ |
-| `F` | extends (...`args`: `Parameters`<`F`\>) => `ReturnType`<`F`\> |
+| `F` | extends `TFunction`<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `fn` | `F` | `undefined` |
-| `delay` | `number` | `50` |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `fn` | `F` | `undefined` | The function to debounce |
+| `delay?` | `number` | `50` | The delay in milliseconds |
 
 #### Returns
 
@@ -726,14 +705,14 @@ Debounce a function asynchronously, returning a promise
 
 | Name | Type |
 | :------ | :------ |
-| `F` | extends (...`args`: `Parameters`<`F`\>) => `ReturnType`<`F`\> |
+| `F` | extends `TFunction`<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `fn` | `F` | `undefined` |
-| `delay` | `number` | `50` |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `fn` | `F` | `undefined` | The function to debounce |
+| `delay?` | `number` | `50` | The delay in milliseconds |
 
 #### Returns
 
@@ -767,14 +746,14 @@ debounceAsync
 
 | Name | Type |
 | :------ | :------ |
-| `F` | extends (...`args`: `Parameters`<`F`\>) => `ReturnType`<`F`\> |
+| `F` | extends `TFunction`<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `fn` | `F` | `undefined` |
-| `delay` | `number` | `50` |
+| `delay?` | `number` | `50` |
 
 #### Returns
 
@@ -796,19 +775,25 @@ ___
 
 ### functionClone
 
-▸ **functionClone**(`fn`): [`FunctionType`](README.md#functiontype)
+▸ **functionClone**<`F`\>(`fn`): `TFunction`
 
 Clone a function
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `F` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `fn` | [`FunctionType`](README.md#functiontype) |
+| `fn` | `TFunction`<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
 
 #### Returns
 
-[`FunctionType`](README.md#functiontype)
+`TFunction`
 
 ___
 
