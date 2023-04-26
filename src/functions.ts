@@ -64,10 +64,10 @@ export function tryWait(fn: TryWaitFunction, ...args: any[][]): Promise<any> {
  * Clone a function
  * @category Functions
  */
-export function functionClone<F>(fn: TFunction): TFunction {
+export function functionClone<F extends TFunction>(fn: F): F {
 	return function(...args: any[]): any {
 		return fn.apply(this, ...args)
-	}
+	} as F
 }
 
 /**

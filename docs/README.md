@@ -775,25 +775,25 @@ ___
 
 ### functionClone
 
-▸ **functionClone**<`F`\>(`fn`): `TFunction`
+▸ **functionClone**<`F`\>(`fn`): `F`
 
 Clone a function
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `F` |
+| Name | Type |
+| :------ | :------ |
+| `F` | extends `TFunction`<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `fn` | `TFunction`<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
+| `fn` | `F` |
 
 #### Returns
 
-`TFunction`
+`F`
 
 ___
 
