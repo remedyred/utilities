@@ -151,3 +151,26 @@ export function findFirstDiff(first, second): number {
 }
 
 export {plural, singular} from '@snickbit/plural'
+
+/**
+ * Wrap a string at a certain character length. Optionally add padding to each line
+ * @param {string} text - The text to wrap
+ * @param {number} characters - Number of characters to wrap at
+ * @param {number} [padding] - Number of characters to pad each line with
+ */
+export function wordWrap(text: string, characters: number, padding?: number): string {
+	const lines = []
+	const words = text.split(/\s+/)
+	let line = ''
+	for (const word of words) {
+		if (line.length + word.length + 1 > characters) {
+			lines.push(line)
+			line = ''
+		}
+		line += `${word} `
+	}
+	if (line) {
+		lines.push(line)
+	}
+	return lines.map(line => padString(line, padding)).join('\n')
+}
