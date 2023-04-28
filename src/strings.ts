@@ -159,7 +159,7 @@ export {plural, singular} from '@snickbit/plural'
  * @param {number} [padding] - Number of characters to pad each line with
  */
 export function wordWrap(text: string, characters: number, padding?: number): string {
-	const lines = []
+	const lines: string[] = []
 	const words = text.split(/\s+/)
 	let line = ''
 	for (const word of words) {
