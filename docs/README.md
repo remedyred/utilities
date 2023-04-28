@@ -91,6 +91,7 @@
 - [findFirstDiff](README.md#findfirstdiff)
 - [plural](README.md#plural)
 - [singular](README.md#singular)
+- [wordWrap](README.md#wordwrap)
 
 ### Numbers Functions
 
@@ -1032,6 +1033,26 @@ ___
 #### Returns
 
 `any`
+
+___
+
+### wordWrap
+
+▸ **wordWrap**(`text`, `characters`, `padding?`): `string`
+
+Wrap a string at a certain character length. Optionally add padding to each line
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `text` | `string` | The text to wrap |
+| `characters` | `number` | Number of characters to wrap at |
+| `padding?` | `number` | Number of characters to pad each line with |
+
+#### Returns
+
+`string`
 
 ___
 
