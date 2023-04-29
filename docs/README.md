@@ -939,7 +939,7 @@ ___
 
 ▸ **uuid**(`prefix?`): `string`
 
-Create uuid
+Create a uuid with an optional prefix. Prefix will replace the first part of the uuid.
 
 #### Parameters
 

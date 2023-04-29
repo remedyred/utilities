@@ -1,13 +1,13 @@
-import {nanoid} from 'nanoid'
+import {v4 as secureUuid} from '@lukeed/uuid/secure'
 import {IObject} from './objects'
 import {clone} from './variables'
 
 /**
- * Create uuid
+ * Create a uuid with an optional prefix. Prefix will replace the first part of the uuid.
  * @category Generators
  */
 export function uuid(prefix = ''): string {
-	return `${prefix}${nanoid()}`
+	return `${prefix}${secureUuid().slice(prefix.length)}`
 }
 
 /**
