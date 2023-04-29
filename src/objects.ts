@@ -6,7 +6,7 @@ import {mergeDeep, typeOf} from './variables'
 export type IObject = Record<string | symbol, any>
 
 /** @category Objects */
-export type ObjectPredicate<T = any> = (key: string | symbol, value?: T, object?: object) => unknown
+export type ObjectPredicate<T = any, K = string, O extends object = any> = (key: K, value?: T, object?: O) => unknown
 
 /**
  * Finds an object property's name that matches the given predicate

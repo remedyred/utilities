@@ -285,13 +285,15 @@ ___
 
 ### ObjectPredicate
 
-Ƭ **ObjectPredicate**<`T`\>: (`key`: `string` \| `symbol`, `value?`: `T`, `object?`: `object`) => `unknown`
+Ƭ **ObjectPredicate**<`T`, `K`, `O`\>: (`key`: `K`, `value?`: `T`, `object?`: `O`) => `unknown`
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
 | `T` | `any` |
+| `K` | `string` |
+| `O` | extends `object` = `any` |
 
 #### Type declaration
 
@@ -301,9 +303,9 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `key` | `string` \| `symbol` |
+| `key` | `K` |
 | `value?` | `T` |
-| `object?` | `object` |
+| `object?` | `O` |
 
 ##### Returns
 
@@ -1306,7 +1308,7 @@ Filter an object by a given predicate
 | Name | Type |
 | :------ | :------ |
 | `object` | `I` |
-| `predicate` | [`ObjectPredicate`](README.md#objectpredicate)<`any`\> |
+| `predicate` | [`ObjectPredicate`](README.md#objectpredicate)<`any`, `string`, `any`\> |
 
 #### Returns
 
@@ -1332,7 +1334,7 @@ Finds an object property's value that matches the given predicate
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `object` | `I` |  |
-| `predicate?` | `string` \| `symbol` \| [`ObjectPredicate`](README.md#objectpredicate)<`any`\> | A string or function that returns a boolean |
+| `predicate?` | `string` \| `symbol` \| [`ObjectPredicate`](README.md#objectpredicate)<`any`, `string`, `any`\> | A string or function that returns a boolean |
 
 #### Returns
 
@@ -1358,7 +1360,7 @@ Finds an object property's entry [key, value] that matches the given predicate
 | Name | Type |
 | :------ | :------ |
 | `object` | `I` |
-| `predicate` | `string` \| `symbol` \| [`ObjectPredicate`](README.md#objectpredicate)<`any`\> |
+| `predicate` | `string` \| `symbol` \| [`ObjectPredicate`](README.md#objectpredicate)<`any`, `string`, `any`\> |
 
 #### Returns
 
@@ -1383,7 +1385,7 @@ Finds an object property's name that matches the given predicate
 | Name | Type |
 | :------ | :------ |
 | `object` | `I` |
-| `predicate` | `string` \| `symbol` \| [`ObjectPredicate`](README.md#objectpredicate)<`any`\> |
+| `predicate` | `string` \| `symbol` \| [`ObjectPredicate`](README.md#objectpredicate)<`any`, `string`, `any`\> |
 
 #### Returns
 
