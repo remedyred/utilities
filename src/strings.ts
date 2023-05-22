@@ -94,7 +94,7 @@ export function safeVarName(text: string, replacer = ''): string {
 
 	text = text.split(/[\W_]/) // Split on non-word characters
 		.join(replacer) // Join words with replacer
-		.replace(new RegExp(replacer + replacer, 'g'), replacer) // Replace double replacer with single replacer
+		.replaceAll(new RegExp(replacer + replacer, 'g'), replacer) // Replace double replacer with single replacer
 
 	// If the first character is a number or if full text is a reserved word, add a replacer in front
 	if (/^\d/.test(text) || reserved.includes(text)) {
@@ -113,9 +113,9 @@ export function spaceCase(text: string): string {
 	// force the variable to be a string
 	text = String(text)
 	// treat cap + lower as the start of new word
-	text = text.replace(capital_plus_lower, match => ` ${match[0].toLowerCase() || match[0]}${match[1]}`) // the match is one cap followed by one non-cap
+	text = text.replaceAll(capital_plus_lower, match => ` ${match[0].toLowerCase() || match[0]}${match[1]}`) // the match is one cap followed by one non-cap
 	// treat all remaining capitals as words
-	text = text.replace(capitals, match => ` ${match.toLowerCase()}`) // match is a series of caps
+	text = text.replaceAll(capitals, match => ` ${match.toLowerCase()}`) // match is a series of caps
 	return text.trim() // trim leading and trailing spaces
 }
 
@@ -126,9 +126,9 @@ export function spaceCase(text: string): string {
 export function slugify(text: string, replace = '-'): string {
 	return spaceCase(text)
 		.toLowerCase()
-		.replace(/\s+/g, replace) // Replace spaces with -
-		.replace(/[^\w-]+/g, replace) // Remove all non-word chars
-		.replace(new RegExp(`${replace}${replace}+`, 'g'), replace) // Replace - with a single -
+		.replaceAll(/\s+/g, replace) // Replace spaces with -
+		.replaceAll(/[^\w-]+/g, replace) // Remove all non-word chars
+		.replaceAll(new RegExp(`${replace}${replace}+`, 'g'), replace) // Replace - with a single -
 		.replace(new RegExp(`^${replace}+`), '') // Trim - from start of text
 		.replace(new RegExp(`${replace}+$`), '') // Trim - from end of text
 }

@@ -6,7 +6,7 @@ import {objectFlatten} from './objects'
  * @returns {any}
  * @category Templating
  */
-export const escapeRegExp = (text: string) => String(text).replace(/[$()*+.?[\\\]^{|}]/g, '\\$&')
+export const escapeRegExp = (text: string) => String(text).replaceAll(/[$()*+.?[\\\]^{|}]/g, '\\$&')
 
 /**
  * escape regexp replacement string
@@ -14,7 +14,7 @@ export const escapeRegExp = (text: string) => String(text).replace(/[$()*+.?[\\\
  * @returns {any}
  * @category Templating
  */
-export const escapeReplacement = (text: string) => String(text).replace(/\$/g, '$$$$')
+export const escapeReplacement = (text: string) => String(text).replaceAll('$', '$$$$')
 
 /** @category Templating */
 export type interpolateReplacements = Record<string, any | number | string>
@@ -28,10 +28,10 @@ export function interpolate(text: string, replacements: interpolateReplacements)
 	for (let [from, to] of Object.entries(objectFlatten(replacements))) {
 		to = escapeReplacement(to)
 		if (!from.startsWith('{{')) {
-			text = text.replace(new RegExp(escapeRegExp(`{{${from}}}`), 'g'), to)
+			text = text.replaceAll(new RegExp(escapeRegExp(`{{${from}}}`), 'g'), to)
 		}
 		if (!from.startsWith('${')) {
-			text = text.replace(new RegExp(escapeRegExp(`\${${from}}`), 'g'), to)
+			text = text.replaceAll(new RegExp(escapeRegExp(`\${${from}}`), 'g'), to)
 		}
 	}
 	return text
