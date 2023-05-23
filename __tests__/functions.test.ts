@@ -93,7 +93,11 @@ describe('overloadOptions', () => {
 	}
 
 	test('overloadOptions("test", {}, {}) = {channel: "test", context: {}, config: {}}', () => {
-		expect(overloadOptions([baseChannel, baseContext, baseConfig], baseSchemas)).toEqual(baseExpected)
+		expect(overloadOptions([
+			baseChannel,
+			baseContext,
+			baseConfig
+		], baseSchemas)).toEqual(baseExpected)
 	})
 
 	test('overloadOptions({}, {}) = {context: {}, config: {}}', () => {

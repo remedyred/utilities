@@ -18,13 +18,21 @@ export const advanced: AdvancedVariableType[] = [
 ]
 
 export type CallableVariableType = 'asyncfunction' | 'function' | 'promise'
-export const callable: CallableVariableType[] = ['promise', 'asyncfunction', 'function']
+export const callable: CallableVariableType[] = [
+	'promise',
+	'asyncfunction',
+	'function'
+]
 
 export type PrimitiveVariableType = BasicVariableType | EmptyVariableType
 export const primitive: PrimitiveVariableType[] = [...basic, ...empty]
 
 export type VariableType = AdvancedVariableType | CallableVariableType | PrimitiveVariableType
-export const all: VariableType[] = [...primitive, ...advanced, ...callable]
+export const all: VariableType[] = [
+	...primitive,
+	...advanced,
+	...callable
+]
 
 export default {
 	all,

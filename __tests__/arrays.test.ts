@@ -43,13 +43,21 @@ describe('arrays', () => {
 
 	it('arrayUnique(arr) should return unique values (case sensitive)', () => {
 		const arr_upper = mock_array_strings.map(str => str.toUpperCase())
-		const arr = [...mock_array_strings, ...arr_upper, ...mock_array_strings]
+		const arr = [
+			...mock_array_strings,
+			...arr_upper,
+			...mock_array_strings
+		]
 		expect(arrayUnique(arr)).toEqual([...mock_array_strings, ...arr_upper])
 	})
 
 	it('arrayUniqueInsensitive(arr) should return unique values (case insensitive)', () => {
 		const arr_upper = mock_array_strings.map(str => str.toUpperCase())
-		const arr = [...mock_array_strings, ...arr_upper, ...mock_array_strings]
+		const arr = [
+			...mock_array_strings,
+			...arr_upper,
+			...mock_array_strings
+		]
 		expect(arrayUniqueInsensitive(arr)).toEqual(mock_array_strings)
 	})
 })
