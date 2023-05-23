@@ -51,11 +51,7 @@ const mockExtraObject = {
 
 const mockObjectWithArray = {
 	...mockPlainObject,
-	l: [
-		11,
-		12,
-		13
-	]
+	l: [11, 12, 13]
 }
 
 const mockObjectWithSameArray = {l: [14, 15]}
