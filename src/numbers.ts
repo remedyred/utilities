@@ -97,3 +97,12 @@ export function numberEven(num: number, subtract = false): number {
 export function numberOdd(num: number, subtract = false): number {
 	return num % 2 === 1 ? num : num + (subtract ? -1 : 1)
 }
+
+/**
+ * Convert a string to a number, but less strict than Number() or parseInt().
+ * Will remove all non-numeric characters, and also round the number if it has decimals.
+ * @param {string | number} value
+ */
+export function toInt(value: number | string): number {
+	return Math.round(Number(String(value).replaceAll(/[^\d.-]+/g, '').trim() || 0))
+}
