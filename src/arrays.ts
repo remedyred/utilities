@@ -2,14 +2,14 @@ import {isFunction} from './validations'
 import {mergeDeep, typeOf} from './variables'
 
 /** @category Arrays */
-export type ArrayPredicate = (value: any, index?: number, array?: any[]) => unknown
+export type ArrayPredicate = <T = any>(value: T, index?: number, array?: T[]) => T
 
 /**
  * Checks if the given array only contains a single value, optionally pass a value or predicate to check against
  * @category Arrays
  */
-export function isSingle(array: any[], value?: any): boolean
-export function isSingle(array: any[], predicate?: ArrayPredicate): boolean {
+export function isSingle<T = any>(array: T[], value?: T): boolean
+export function isSingle<T = any>(array: T[], predicate?: ArrayPredicate): boolean {
 	if (array.length !== 1) {
 		return false
 	}
@@ -21,7 +21,7 @@ export function isSingle(array: any[], predicate?: ArrayPredicate): boolean {
  * Returns unique values from an array. Optionally pass a key when the array is an object array.
  * @category Arrays
  */
-export function arrayUnique(array: any[], key?: string): any[] {
+export function arrayUnique<T = any>(array: T[], key?: string): T[] {
 	return [...new Set(array.map(item => key ? item[key] : item))]
 }
 
@@ -29,8 +29,17 @@ export function arrayUnique(array: any[], key?: string): any[] {
  * Returns unique values from an array, ignoring case. Optionally pass a key when the array is an object array.
  * @category Arrays
  */
-export function arrayUniqueInsensitive(array: any[], key?: string): any[] {
-	return [...new Set(array.map(item => key ? item[key].toLowerCase() : item.toLowerCase()))]
+export function arrayUniqueInsensitive<T = any>(array: T[], key?: string): T[] {
+	return [
+		...new Set(array.map(item => {
+			let selectedItem = item
+			if (key) {
+				const itemWithLowercaseKeys = Object.fromEntries(Object.entries(item).map(([key, value]) => [key.toLowerCase(), value]))
+				selectedItem = itemWithLowercaseKeys[String(key).toLowerCase()]
+			}
+			return typeof selectedItem === 'string' ? selectedItem.toLowerCase() as T : selectedItem
+		}))
+	]
 }
 
 /**
@@ -44,27 +53,34 @@ export function arrayUniqueInsensitive(array: any[], key?: string): any[] {
  * arrayToObject([{id: 1, name: 'John'}, {id: 2, name: 'Jane'}], 'name')
  * // {John: {id: 1, name: 'John'}, Jane: {id: 2, name: 'Jane'}}
  */
-export const arrayToObject = (array: any[], key: number | string, value: number | string): object => Object.fromEntries(array.map(item => [item[key], value ? item[value] : item]))
+export const arrayToObject = <T = any, V = T>(array: T[], key: keyof T, value: keyof T): Record<string, V> => {
+	return Object.fromEntries(array.map(item => [
+		// eslint-disable-next-line array-element-newline
+		item[key], // set new object key
+		value ? item[value] : item // set new object value
+	]))
+}
 
 /**
  * Wrap a variable in an array if it is not already an array
  * @category Arrays
  */
-export const arrayWrap = (values: any[] | any): any[] => Array.isArray(values) ? values : [values]
+export const arrayWrap = <T = any>(values: T | T[]): T[] => Array.isArray(values) ? values : [values]
 
 /**
  * Return the duplicate values from an array
  * @category Arrays
  */
-export function arrayDuplicates(array: any[], predicate?: ArrayPredicate): any[] {
-	const unique: any[] = [],
-		duplicates: any[] = []
+export function arrayDuplicates<T = any>(array: T[], predicate?: ArrayPredicate): T[] {
+	const unique: T[] = [],
+		duplicates: T[] = []
 	predicate ||= (value => value)
 	for (const item of array) {
-		if (unique.includes(predicate(item))) {
+		const processedItem = predicate<T>(item)
+		if (unique.includes(processedItem)) {
 			duplicates.push(item)
 		} else {
-			unique.push(predicate(item))
+			unique.push(processedItem)
 		}
 	}
 	return duplicates
@@ -74,7 +90,7 @@ export function arrayDuplicates(array: any[], predicate?: ArrayPredicate): any[]
  * Finds and returns an element from an array, removing it in the process
  * @category Arrays
  */
-export function arrayRemove(array: any[], value: any): any[] {
+export function arrayRemove<T = any>(array: T[], value: T): T[] {
 	if (!array || !value) {
 		return array
 	}
@@ -89,7 +105,7 @@ export function arrayRemove(array: any[], value: any): any[] {
  * Shuffles/randomizes an array
  * @category Arrays
  */
-export function arrayShuffle(array: any[]): any[] {
+export function arrayShuffle<T = any>(array: T[]): T[] {
 	let currentIndex = array.length,
 		randomIndex
 
@@ -137,7 +153,7 @@ export function arrayMergeDeep(...arrs: any[][]): any[] {
  * Get the reverse of a filtered array
  * @category Arrays
  */
-export function arrayReject(array: any[], callback: (...args: any[]) => boolean): any[] {
+export function arrayReject<T = any>(array: T[], callback: (...args: any[]) => boolean): T[] {
 	return array.filter((...args: any[]) => !callback.apply(array, args))
 }
 
