@@ -91,6 +91,7 @@
 - [findFirstDiff](README.md#findfirstdiff)
 - [plural](README.md#plural)
 - [singular](README.md#singular)
+- [toInt](README.md#toint)
 - [wordWrap](README.md#wordwrap)
 
 ### Numbers Functions
@@ -183,23 +184,29 @@
 
 ### ArrayPredicate
 
-Ƭ **ArrayPredicate**: (`value`: `any`, `index?`: `number`, `array?`: `any`[]) => `unknown`
+Ƭ **ArrayPredicate**: <T\>(`value`: `T`, `index?`: `number`, `array?`: `T`[]) => `T`
 
 #### Type declaration
 
-▸ (`value`, `index?`, `array?`): `unknown`
+▸ <`T`\>(`value`, `index?`, `array?`): `T`
+
+##### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `value` | `any` |
+| `value` | `T` |
 | `index?` | `number` |
-| `array?` | `any`[] |
+| `array?` | `T`[] |
 
 ##### Returns
 
-`unknown`
+`T`
 
 ___
 
@@ -417,20 +424,26 @@ ___
 
 ### arrayDuplicates
 
-▸ **arrayDuplicates**(`array`, `predicate?`): `any`[]
+▸ **arrayDuplicates**<`T`\>(`array`, `predicate?`): `T`[]
 
 Return the duplicate values from an array
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `array` | `any`[] |
+| `array` | `T`[] |
 | `predicate?` | [`ArrayPredicate`](README.md#arraypredicate) |
 
 #### Returns
 
-`any`[]
+`T`[]
 
 ___
 
@@ -472,57 +485,75 @@ ___
 
 ### arrayReject
 
-▸ **arrayReject**(`array`, `callback`): `any`[]
+▸ **arrayReject**<`T`\>(`array`, `callback`): `T`[]
 
 Get the reverse of a filtered array
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `array` | `any`[] |
+| `array` | `T`[] |
 | `callback` | (...`args`: `any`[]) => `boolean` |
 
 #### Returns
 
-`any`[]
+`T`[]
 
 ___
 
 ### arrayRemove
 
-▸ **arrayRemove**(`array`, `value`): `any`[]
+▸ **arrayRemove**<`T`\>(`array`, `value`): `T`[]
 
 Finds and returns an element from an array, removing it in the process
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `array` | `any`[] |
-| `value` | `any` |
+| `array` | `T`[] |
+| `value` | `T` |
 
 #### Returns
 
-`any`[]
+`T`[]
 
 ___
 
 ### arrayShuffle
 
-▸ **arrayShuffle**(`array`): `any`[]
+▸ **arrayShuffle**<`T`\>(`array`): `T`[]
 
 Shuffles/randomizes an array
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `array` | `any`[] |
+| `array` | `T`[] |
 
 #### Returns
 
-`any`[]
+`T`[]
 
 ___
 
@@ -552,7 +583,7 @@ ___
 
 ### arrayToObject
 
-▸ **arrayToObject**(`array`, `key`, `value`): `object`
+▸ **arrayToObject**<`T`, `V`\>(`array`, `key`, `value`): `Record`<`string`, `V`\>
 
 Convert an array to an object using the given key as the property
 
@@ -570,88 +601,119 @@ arrayToObject([{id: 1, name: 'John'}, {id: 2, name: 'Jane'}], 'name')
 // {John: {id: 1, name: 'John'}, Jane: {id: 2, name: 'Jane'}}
 ```
 
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
+| `V` | `T` |
+
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `array` | `any`[] |
-| `key` | `string` \| `number` |
-| `value` | `string` \| `number` |
+| `array` | `T`[] |
+| `key` | keyof `T` |
+| `value` | keyof `T` |
 
 #### Returns
 
-`object`
+`Record`<`string`, `V`\>
 
 ___
 
 ### arrayUnique
 
-▸ **arrayUnique**(`array`, `key?`): `any`[]
+▸ **arrayUnique**<`T`\>(`array`, `key?`): `T`[]
 
 Returns unique values from an array. Optionally pass a key when the array is an object array.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `array` | `any`[] |
+| `array` | `T`[] |
 | `key?` | `string` |
 
 #### Returns
 
-`any`[]
+`T`[]
 
 ___
 
 ### arrayUniqueInsensitive
 
-▸ **arrayUniqueInsensitive**(`array`, `key?`): `any`[]
+▸ **arrayUniqueInsensitive**<`T`\>(`array`, `key?`): `T`[]
 
 Returns unique values from an array, ignoring case. Optionally pass a key when the array is an object array.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `array` | `any`[] |
+| `array` | `T`[] |
 | `key?` | `string` |
 
 #### Returns
 
-`any`[]
+`T`[]
 
 ___
 
 ### arrayWrap
 
-▸ **arrayWrap**(`values`): `any`[]
+▸ **arrayWrap**<`T`\>(`values`): `T`[]
 
 Wrap a variable in an array if it is not already an array
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `values` | `any` |
+| `values` | `T` \| `T`[] |
 
 #### Returns
 
-`any`[]
+`T`[]
 
 ___
 
 ### isSingle
 
-▸ **isSingle**(`array`, `value?`): `boolean`
+▸ **isSingle**<`T`\>(`array`, `value?`): `boolean`
 
 Checks if the given array only contains a single value, optionally pass a value or predicate to check against
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `array` | `any`[] |
-| `value?` | `any` |
+| `array` | `T`[] |
+| `value?` | `T` |
 
 #### Returns
 
@@ -1035,6 +1097,25 @@ ___
 #### Returns
 
 `any`
+
+___
+
+### toInt
+
+▸ **toInt**(`value`): `number`
+
+Convert a string to a number, but less strict than Number() or parseInt().
+Will remove all non-numeric characters, and also round the number if it has decimals.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value` | `string` \| `number` |
+
+#### Returns
+
+`number`
 
 ___
 
