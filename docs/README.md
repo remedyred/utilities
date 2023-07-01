@@ -86,13 +86,15 @@
 - [randomString](README.md#randomstring)
 - [uuid](README.md#uuid)
 
+### Misc. Functions
+
+- [sleep](README.md#sleep)
+
 ### Modules Functions
 
-- [findFirstDiff](README.md#findfirstdiff)
 - [plural](README.md#plural)
 - [singular](README.md#singular)
 - [toInt](README.md#toint)
-- [wordWrap](README.md#wordwrap)
 
 ### Numbers Functions
 
@@ -130,18 +132,23 @@
 - [JSONParse](README.md#jsonparse)
 - [JSONPrettify](README.md#jsonprettify)
 - [JSONStringify](README.md#jsonstringify)
+- [parse](README.md#parse)
+
+### Strings Functions
+
 - [camelCase](README.md#camelcase)
+- [findFirstDiff](README.md#findfirstdiff)
 - [initials](README.md#initials)
 - [kebabCase](README.md#kebabcase)
 - [limitString](README.md#limitstring)
 - [limitWords](README.md#limitwords)
+- [naturalSort](README.md#naturalsort)
 - [padString](README.md#padstring)
-- [parse](README.md#parse)
 - [safeVarName](README.md#safevarname)
-- [sleep](README.md#sleep)
 - [slugify](README.md#slugify)
 - [snakeCase](README.md#snakecase)
 - [spaceCase](README.md#spacecase)
+- [wordWrap](README.md#wordwrap)
 
 ### Templating Functions
 
@@ -1015,28 +1022,27 @@ Create a uuid with an optional prefix. Prefix will replace the first part of the
 
 ___
 
-## Modules Functions
+## Misc. Functions
 
-### findFirstDiff
+### sleep
 
-▸ **findFirstDiff**(`first`, `second`): `number`
+▸ **sleep**(`ms`): `Promise`<`unknown`\>
 
-Return the index of the first difference between two strings
+sleep for a given time
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `first` | `any` |
-| `second` | `any` |
+| `ms` | `number` |
 
 #### Returns
 
-`number`
-
--1 if no difference
+`Promise`<`unknown`\>
 
 ___
+
+## Modules Functions
 
 ### plural
 
@@ -1116,26 +1122,6 @@ Will remove all non-numeric characters, and also round the number if it has deci
 #### Returns
 
 `number`
-
-___
-
-### wordWrap
-
-▸ **wordWrap**(`text`, `characters`, `padding?`): `string`
-
-Wrap a string at a certain character length. Optionally add padding to each line
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `text` | `string` | The text to wrap |
-| `characters` | `number` | Number of characters to wrap at |
-| `padding?` | `number` | Number of characters to pad each line with |
-
-#### Returns
-
-`string`
 
 ___
 
@@ -1816,6 +1802,32 @@ Parse a variable into a JSON string
 
 ___
 
+### parse
+
+▸ **parse**(`value`): `any`
+
+Parse a string into it's primitive type if possible. If not, return the original variable.
+
+**`Example`**
+
+```ts
+'123' => 123 | '123.456' => 123.456 | 'true' => true | 'false' => false | 'null' => null | 'undefined' => undefined
+```
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value` | `any` |
+
+#### Returns
+
+`any`
+
+___
+
+## Strings Functions
+
 ### camelCase
 
 ▸ **camelCase**(`text`): `string`
@@ -1835,6 +1847,27 @@ https://www.npmjs.com/package/just-camel-case
 #### Returns
 
 `string`
+
+___
+
+### findFirstDiff
+
+▸ **findFirstDiff**(`first`, `second`): `number`
+
+Return the index of the first difference between two strings
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `first` | `any` |
+| `second` | `any` |
+
+#### Returns
+
+`number`
+
+-1 if no difference
 
 ___
 
@@ -1914,6 +1947,26 @@ Limit a string to a certain amount of words
 
 ___
 
+### naturalSort
+
+▸ **naturalSort**(`str1`, `str2`, `caseSensitive?`): `number`
+
+Compare two strings using a "natural order" algorithm
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `str1` | `string` | `undefined` |
+| `str2` | `string` | `undefined` |
+| `caseSensitive?` | `boolean` | `false` |
+
+#### Returns
+
+`number`
+
+___
+
 ### padString
 
 ▸ **padString**(`text`, `padding?`, `character?`): `string`
@@ -1934,30 +1987,6 @@ Pad a string on both sides with the given character and length
 
 ___
 
-### parse
-
-▸ **parse**(`value`): `any`
-
-Parse a string into it's primitive type if possible. If not, return the original variable.
-
-**`Example`**
-
-```ts
-'123' => 123 | '123.456' => 123.456 | 'true' => true | 'false' => false | 'null' => null | 'undefined' => undefined
-```
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `value` | `any` |
-
-#### Returns
-
-`any`
-
-___
-
 ### safeVarName
 
 ▸ **safeVarName**(`text`, `replacer?`): `string`
@@ -1974,24 +2003,6 @@ Create a safe javascript variable name from a string
 #### Returns
 
 `string`
-
-___
-
-### sleep
-
-▸ **sleep**(`ms`): `Promise`<`unknown`\>
-
-sleep for a given time
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `ms` | `number` |
-
-#### Returns
-
-`Promise`<`unknown`\>
 
 ___
 
@@ -2043,6 +2054,26 @@ Convert a string to space-case
 | Name | Type |
 | :------ | :------ |
 | `text` | `string` |
+
+#### Returns
+
+`string`
+
+___
+
+### wordWrap
+
+▸ **wordWrap**(`text`, `characters`, `padding?`): `string`
+
+Wrap a string at a certain character length. Optionally add padding to each line
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `text` | `string` | The text to wrap |
+| `characters` | `number` | Number of characters to wrap at |
+| `padding?` | `number` | Number of characters to pad each line with |
 
 #### Returns
 
