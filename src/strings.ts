@@ -176,3 +176,22 @@ export function wordWrap(text: string, characters: number, padding?: number): st
 	}
 	return lines.map(line => padString(line, padding)).join('\n')
 }
+
+/**
+ * Compare two strings using a "natural order" algorithm
+ * @param {string} str1
+ * @param {string} str2
+ * @param {boolean} [caseSensitive=false]
+ * @category Strings
+ */
+export function naturalSort(str1: string, str2: string, caseSensitive = false): number {
+	const a = caseSensitive ? str1 : str1.toLowerCase()
+	const b = caseSensitive ? str2 : str2.toLowerCase()
+
+	const collator = new Intl.Collator(undefined, {
+		numeric: true,
+		sensitivity: 'base'
+	})
+
+	return collator.compare(a, b)
+}
