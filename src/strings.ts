@@ -5,19 +5,19 @@ import reserved from './data/reserved'
 
 /**
  * @internal
- * @category Parsing
+ * @category Strings
  */
 export const capital_plus_lower = /[A-Z\u00C0-Ý][a-zà-ÿ]/g
 
 /**
  * @internal
- * @category Parsing
+ * @category Strings
  */
 export const capitals = /[A-Z\u00C0-Ý]+/g
 
 /**
  * Convert a string to snake_case
- * @category Parsing
+ * @category Strings
  */
 export const snakeCase = (text: string) => slugify(text, '_')
 
@@ -26,7 +26,7 @@ export const snakeCase = (text: string) => slugify(text, '_')
  *
  * @param text - The string to convert
  * @returns {string}
- * @category Parsing
+ * @category Strings
  */
 export const kebabCase = (text: string) => slugify(text)
 
@@ -34,25 +34,25 @@ export const kebabCase = (text: string) => slugify(text)
  * Convert a string to camelCase
  *
  * @see https://www.npmjs.com/package/just-camel-case
- * @category Parsing
+ * @category Strings
  */
 export const camelCase = (text: string): string => justCamelCase(text)
 
 /**
  * Create a pluralized string
- * @category Parsing
+ * @category Strings
  * @see @snickbit/plural
  */
 
 /**
  * Create a singularized string
- * @category Parsing
+ * @category Strings
  * @see @snickbit/plural
  */
 
 /**
  * Convert a string to initials
- * @category Parsing
+ * @category Strings
  */
 export const initials = (text: string): string => text
 	.split(/[^A-Za-z]/)
@@ -62,13 +62,13 @@ export const initials = (text: string): string => text
 
 /**
  * Limit a string to a certain length
- * @category Parsing
+ * @category Strings
  */
 export const limitString = (text: string, limit = 100, suffix = '...'): string => text.length > limit ? text.slice(0, Math.max(0, limit)) + suffix : text
 
 /**
  * Limit a string to a certain amount of words
- * @category Parsing
+ * @category Strings
  */
 export function limitWords(text: string, limit = 100, suffix = '...'): string {
 	const words = text.split(/\s+/)
@@ -77,7 +77,7 @@ export function limitWords(text: string, limit = 100, suffix = '...'): string {
 
 /**
  * Pad a string on both sides with the given character and length
- * @category Parsing
+ * @category Strings
  */
 export function padString(text: string, padding = 2, character = ' '): string {
 	const pad = !Number.isNaN(padding) && padding > 0 ? character.repeat(padding) : ''
@@ -86,7 +86,7 @@ export function padString(text: string, padding = 2, character = ' '): string {
 
 /**
  * Create a safe javascript variable name from a string
- * @category Parsing
+ * @category Strings
  */
 export function safeVarName(text: string, replacer = ''): string {
 	// check that replacer itself is valid
@@ -107,7 +107,7 @@ export function safeVarName(text: string, replacer = ''): string {
 
 /**
  * Convert a string to space-case
- * @category Parsing
+ * @category Strings
  */
 export function spaceCase(text: string): string {
 	// force the variable to be a string
@@ -121,7 +121,7 @@ export function spaceCase(text: string): string {
 
 /**
  * Create slug from string
- * @category Parsing
+ * @category Strings
  */
 export function slugify(text: string, replace = '-'): string {
 	return spaceCase(text)
@@ -138,6 +138,7 @@ export function slugify(text: string, replace = '-'): string {
  * @param first
  * @param second
  * @returns {number} -1 if no difference
+ * @category Strings
  */
 export function findFirstDiff(first, second): number {
 	let index = 0
@@ -157,6 +158,7 @@ export {plural, singular} from '@snickbit/plural'
  * @param {string} text - The text to wrap
  * @param {number} characters - Number of characters to wrap at
  * @param {number} [padding] - Number of characters to pad each line with
+ * @category Strings
  */
 export function wordWrap(text: string, characters: number, padding?: number): string {
 	const lines: string[] = []
