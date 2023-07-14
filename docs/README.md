@@ -148,6 +148,7 @@
 - [slugify](README.md#slugify)
 - [snakeCase](README.md#snakecase)
 - [spaceCase](README.md#spacecase)
+- [upperFirst](README.md#upperfirst)
 - [wordWrap](README.md#wordwrap)
 
 ### Templating Functions
@@ -2054,6 +2055,25 @@ Convert a string to space-case
 | Name | Type |
 | :------ | :------ |
 | `text` | `string` |
+
+#### Returns
+
+`string`
+
+___
+
+### upperFirst
+
+▸ **upperFirst**(`text`, `normalize?`): `string`
+
+Capitalize the first character of a string
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `text` | `string` | `undefined` | The text to capitalize |
+| `normalize?` | `boolean` | `false` | Convert the rest of the string to lowercase |
 
 #### Returns
 

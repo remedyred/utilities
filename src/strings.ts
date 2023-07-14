@@ -195,3 +195,16 @@ export function naturalSort(str1: string, str2: string, caseSensitive = false): 
 
 	return collator.compare(a, b)
 }
+
+/**
+ * Capitalize the first character of a string
+ * @param {string} text - The text to capitalize
+ * @param {boolean} [normalize=false] - Convert the rest of the string to lowercase
+ * @category Strings
+ */
+export function upperFirst(text: string, normalize = false) {
+	if (normalize) {
+		text = String(text).toLowerCase()
+	}
+	return String(text).charAt(0).toUpperCase() + text.slice(1)
+}
