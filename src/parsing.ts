@@ -69,7 +69,7 @@ export function JSONParse<T = any>(text: string, strict?: boolean): T | undefine
 	return json
 }
 
-type JSONStringifyOptions = boolean | {force?: boolean; pretty?: boolean | number}
+export type JSONStringifyOptions = boolean | {force?: boolean; pretty?: boolean | number}
 
 /**
  * Parse a variable into a JSON string

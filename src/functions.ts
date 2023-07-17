@@ -40,7 +40,7 @@ export function parseOptions(given: IObject | any, defaults: IObject, non_object
 	return given
 }
 
-type TFunction<F extends AnyFunction = AnyFunction> = (...args: Parameters<F>) => ReturnType<F>
+export type TFunction<F extends AnyFunction = AnyFunction> = (...args: Parameters<F>) => ReturnType<F>
 
 export type TryWaitFunction = (...args: any[]) => Promise<any> | any
 

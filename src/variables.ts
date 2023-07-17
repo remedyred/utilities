@@ -63,7 +63,7 @@ export function typeOf(value: any): VariableType {
 		.toLowerCase()
 }
 
-interface isCallableOptions {
+export interface isCallableOptions {
 	strict: false
 	async: false
 }
