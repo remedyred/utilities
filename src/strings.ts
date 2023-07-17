@@ -39,18 +39,6 @@ export const kebabCase = (text: string) => slugify(text)
 export const camelCase = (text: string): string => justCamelCase(text)
 
 /**
- * Create a pluralized string
- * @category Strings
- * @see @snickbit/plural
- */
-
-/**
- * Create a singularized string
- * @category Strings
- * @see @snickbit/plural
- */
-
-/**
  * Convert a string to initials
  * @category Strings
  */
@@ -151,7 +139,21 @@ export function findFirstDiff(first, second): number {
 	return index
 }
 
-export {plural, singular} from '@snickbit/plural'
+/**
+ * Get the plural version of a word
+ * @category Strings
+ * @see @snickbit/plural
+ * @deprecated Use @snickbit/plural instead, this will be removed in the next major version
+ */
+export {plural} from '@snickbit/plural'
+
+/**
+ * Get the singular version of a word
+ * @category Strings
+ * @see @snickbit/plural
+ * @deprecated Use @snickbit/plural instead, this will be removed in the next major version
+ */
+export {singular} from '@snickbit/plural'
 
 /**
  * Wrap a string at a certain character length. Optionally add padding to each line
