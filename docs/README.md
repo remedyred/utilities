@@ -2,6 +2,10 @@
 
 ## Table of contents
 
+### Modules Interfaces
+
+- [isCallableOptions](interfaces/isCallableOptions.md)
+
 ### Validation Interfaces
 
 - [AnyFunction](interfaces/AnyFunction.md)
@@ -21,8 +25,10 @@
 - [BasicVariableType](README.md#basicvariabletype)
 - [CallableVariableType](README.md#callablevariabletype)
 - [EmptyVariableType](README.md#emptyvariabletype)
+- [JSONStringifyOptions](README.md#jsonstringifyoptions)
 - [OverloadSchema](README.md#overloadschema)
 - [PrimitiveVariableType](README.md#primitivevariabletype)
+- [TFunction](README.md#tfunction)
 - [TryWaitFunction](README.md#trywaitfunction)
 - [VariableType](README.md#variabletype)
 
@@ -252,6 +258,12 @@ ___
 
 ___
 
+### JSONStringifyOptions
+
+Ƭ **JSONStringifyOptions**: `boolean` \| { `force?`: `boolean` ; `pretty?`: `boolean` \| `number`  }
+
+___
+
 ### OverloadSchema
 
 Ƭ **OverloadSchema**: `Record`<`string`, [`VariableType`](README.md#variabletype)\>
@@ -261,6 +273,32 @@ ___
 ### PrimitiveVariableType
 
 Ƭ **PrimitiveVariableType**: [`BasicVariableType`](README.md#basicvariabletype) \| [`EmptyVariableType`](README.md#emptyvariabletype)
+
+___
+
+### TFunction
+
+Ƭ **TFunction**<`F`\>: (...`args`: `Parameters`<`F`\>) => `ReturnType`<`F`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `F` | extends [`AnyFunction`](interfaces/AnyFunction.md) = [`AnyFunction`](interfaces/AnyFunction.md) |
+
+#### Type declaration
+
+▸ (`...args`): `ReturnType`<`F`\>
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `...args` | `Parameters`<`F`\> |
+
+##### Returns
+
+`ReturnType`<`F`\>
 
 ___
 
@@ -741,7 +779,7 @@ Debounce a function
 
 | Name | Type |
 | :------ | :------ |
-| `F` | extends `TFunction`<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
+| `F` | extends [`TFunction`](README.md#tfunction)<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
 
 #### Parameters
 
@@ -778,7 +816,7 @@ Debounce a function asynchronously, returning a promise
 
 | Name | Type |
 | :------ | :------ |
-| `F` | extends `TFunction`<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
+| `F` | extends [`TFunction`](README.md#tfunction)<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
 
 #### Parameters
 
@@ -819,7 +857,7 @@ debounceAsync
 
 | Name | Type |
 | :------ | :------ |
-| `F` | extends `TFunction`<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
+| `F` | extends [`TFunction`](README.md#tfunction)<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
 
 #### Parameters
 
@@ -856,7 +894,7 @@ Clone a function
 
 | Name | Type |
 | :------ | :------ |
-| `F` | extends `TFunction`<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
+| `F` | extends [`TFunction`](README.md#tfunction)<[`AnyFunction`](interfaces/AnyFunction.md)<`any`\>\> |
 
 #### Parameters
 
@@ -1079,6 +1117,8 @@ ___
 ### singular
 
 ▸ **singular**(`word`, `count?`): `any`
+
+Singularize a word.
 
 #### Parameters
 
@@ -1795,7 +1835,7 @@ Parse a variable into a JSON string
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `data` | `T` | `undefined` |
-| `options` | `JSONStringifyOptions` | `false` |
+| `options` | [`JSONStringifyOptions`](README.md#jsonstringifyoptions) | `false` |
 
 #### Returns
 
@@ -2628,7 +2668,7 @@ Check if a variable is callable
 | Name | Type |
 | :------ | :------ |
 | `value` | `any` |
-| `options?` | `boolean` \| `Partial`<`isCallableOptions`\> |
+| `options?` | `boolean` \| `Partial`<[`isCallableOptions`](interfaces/isCallableOptions.md)\> |
 
 #### Returns
 
