@@ -1118,7 +1118,7 @@ ___
 
 ▸ **singular**(`word`, `count?`): `any`
 
-Singularize a word.
+Get the singular version of a word
 
 #### Parameters
 
