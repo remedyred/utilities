@@ -271,3 +271,30 @@ export function objectOverwrite<I extends object = IObject>(object: I, ...object
 	}
 	return object
 }
+
+/**
+ * Get the difference between two objects
+ * @param {any} obj1
+ * @param {any} obj2
+ */
+export function objectDiff(obj1: any, obj2: any): Record<string, any> {
+	const diff: Record<string, any> = {}
+
+	const allKeys = new Set([...Object.keys(obj1), ...Object.keys(obj2)])
+
+	for (const key of allKeys) {
+		const value1 = obj1[key]
+		const value2 = obj2[key]
+
+		if (typeof value1 === 'object' && typeof value2 === 'object') {
+			const nestedDiff = objectDiff(value1, value2)
+			if (Object.keys(nestedDiff).length > 0) {
+				diff[key] = nestedDiff
+			}
+		} else if (value1 !== value2) {
+			diff[key] = value2
+		}
+	}
+
+	return diff
+}
