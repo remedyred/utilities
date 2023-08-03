@@ -98,6 +98,7 @@
 
 ### Modules Functions
 
+- [objectDiff](README.md#objectdiff)
 - [plural](README.md#plural)
 - [singular](README.md#singular)
 - [toInt](README.md#toint)
@@ -1082,6 +1083,25 @@ sleep for a given time
 ___
 
 ## Modules Functions
+
+### objectDiff
+
+▸ **objectDiff**(`obj1`, `obj2`): `Record`<`string`, `any`\>
+
+Get the difference between two objects
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `obj1` | `any` |
+| `obj2` | `any` |
+
+#### Returns
+
+`Record`<`string`, `any`\>
+
+___
 
 ### plural
 
