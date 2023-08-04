@@ -277,8 +277,8 @@ export function objectOverwrite<I extends object = IObject>(object: I, ...object
  * @param {any} obj1
  * @param {any} obj2
  */
-export function objectDiff(obj1: any, obj2: any): Record<string, any> {
-	const diff: Record<string, any> = {}
+export function objectDiff<T extends object = any>(obj1: Partial<T> & any, obj2: Partial<T> & any): Partial<T> {
+	const diff: Partial<T> = {}
 
 	const allKeys = new Set([...Object.keys(obj1), ...Object.keys(obj2)])
 

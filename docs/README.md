@@ -1086,9 +1086,15 @@ ___
 
 ### objectDiff
 
-▸ **objectDiff**(`obj1`, `obj2`): `Record`<`string`, `any`\>
+▸ **objectDiff**<`T`\>(`obj1`, `obj2`): `Partial`<`T`\>
 
 Get the difference between two objects
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `object` = `any` |
 
 #### Parameters
 
@@ -1099,7 +1105,7 @@ Get the difference between two objects
 
 #### Returns
 
-`Record`<`string`, `any`\>
+`Partial`<`T`\>
 
 ___
 
