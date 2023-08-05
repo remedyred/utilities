@@ -3,14 +3,9 @@ import {defineConfig} from 'tsup'
 import indexer from '@snickbit/indexer/esbuild'
 
 export default defineConfig({
-	entry: [
-		"src/index.ts"
-	],
+	entry: ['src/index.ts'],
 	clean: true,
 	dts: true,
-	format: [
-		"esm",
-		"cjs"
-	],
+	format: ['esm', 'cjs'],
 	esbuildPlugins: [indexer()]
 })

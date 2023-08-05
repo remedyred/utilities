@@ -2384,7 +2384,7 @@ ___
 
 ### isEmpty
 
-▸ **isEmpty**(`value`): value is EmptyObject
+▸ **isEmpty**(`value`): value is undefined \| null \| EmptyObject
 
 Check if a value is empty
 
@@ -2396,7 +2396,7 @@ Check if a value is empty
 
 #### Returns
 
-value is EmptyObject
+value is undefined \| null \| EmptyObject
 
 ▸ **isEmpty**(`value`): value is ""
 
@@ -2458,7 +2458,7 @@ ___
 
 ### isNullDefined
 
-▸ **isNullDefined**(`value`): value is null
+▸ **isNullDefined**(`value`): value is undefined \| null
 
 Check if a value is null or undefined
 
@@ -2470,7 +2470,7 @@ Check if a value is null or undefined
 
 #### Returns
 
-value is null
+value is undefined \| null
 
 ___
 

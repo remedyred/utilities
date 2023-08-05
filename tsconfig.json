@@ -32,6 +32,7 @@
 	"include": [
 		"src/**/*.ts",
 		"__tests__/**/*.ts",
-		"tsup.config.ts"
+		"tsup.config.ts",
+		"package.json"
 	]
 }

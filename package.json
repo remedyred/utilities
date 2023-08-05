@@ -17,13 +17,14 @@
 	"scripts": {
 		"build": "tsup --minify",
 		"check": "pnpm run lint && pnpm run typecheck",
-		"test": "jest",
 		"dev": "tsup --watch",
-		"lint": "eslint \"**/*.{ts,json,yml,yaml}\" --cache --color",
-		"lint:fix": "pnpm run lint --fix",
 		"docs": "typedoc src/index.ts",
 		"index": "indexer",
+		"lint": "eslint \"**/*.{ts,json,yml,yaml}\" --cache --color",
+		"lint:fix": "pnpm run lint --fix",
+		"pr": "pnpm run lint:fix && pnpm run typecheck && pnpm run build && pnpm run test && pnpm run docs",
 		"release": "semantic-release",
+		"test": "jest",
 		"typecheck": "tsc --noEmit"
 	},
 	"release": {
