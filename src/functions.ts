@@ -66,7 +66,7 @@ export function tryWait(fn: TryWaitFunction, ...args: any[][]): Promise<any> {
  */
 export function functionClone<F extends TFunction>(fn: F): F {
 	return function(...args: any[]): any {
-		return fn.apply(this, ...args)
+		return fn.apply(this, args)
 	} as F
 }
 

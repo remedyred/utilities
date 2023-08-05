@@ -34,7 +34,8 @@ export function arrayUniqueInsensitive<T = any>(array: T[], key?: string): T[] {
 		...new Set(array.map(item => {
 			let selectedItem = item
 			if (key) {
-				const itemWithLowercaseKeys = Object.fromEntries(Object.entries(item).map(([key, value]) => [key.toLowerCase(), value]))
+				const itemWithLowercaseKeys = Object.fromEntries(Object.entries(item as object)
+					.map(([key, value]) => [key.toLowerCase(), value]))
 				selectedItem = itemWithLowercaseKeys[String(key).toLowerCase()]
 			}
 			return typeof selectedItem === 'string' ? selectedItem.toLowerCase() as T : selectedItem

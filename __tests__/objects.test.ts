@@ -172,7 +172,7 @@ describe('objects', () => {
 			expect(objectFlatten).toBeDefined()
 		})
 
-		xit('should accept a nested object, and return an object with only a single level', () => {
+		it.skip('should accept a nested object, and return an object with only a single level', () => {
 			expect(nestedObject).toStrictEqual({
 				a: 1,
 				b: 2,
@@ -249,7 +249,7 @@ describe('objects', () => {
 			expect(objectMergeDeep).toBeDefined()
 		})
 
-		xit('objectMergeDeep should return expected output', () => {
+		it.skip('objectMergeDeep should return expected output', () => {
 			expect(objectMergeDeep(mockObjectWithArray, mockObjectWithSameArray)).toStrictEqual({
 				...mockPlainObject,
 				l: [
@@ -331,7 +331,7 @@ describe('objects', () => {
 		})
 
 		it('should accept an object and sort it by a predicate', () => {
-			const sorted = objectSort(unsortedObject, ([, value_a]: [string, number], [, value_b]: [string, number]) => {
+			const sorted = objectSort(unsortedObject, ([, value_a]: [string, any], [, value_b]: [string, any]) => {
 				return value_a - value_b
 			})
 			expect(JSON.stringify(sorted)).toEqual(JSON.stringify({

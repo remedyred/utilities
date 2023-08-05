@@ -59,8 +59,12 @@ export function typeOf(value: any): VariableType {
 	if (varType === 'function' && value.constructor.name === 'AsyncFunction') {
 		return 'asyncfunction'
 	}
-	return Object.prototype.toString?.call(value).slice(8, -1)
-		.toLowerCase()
+	return Object
+		.prototype
+		.toString
+		?.call(value)
+		.slice(8, -1)
+		.toLowerCase() as VariableType
 }
 
 export interface isCallableOptions {
