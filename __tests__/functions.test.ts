@@ -1,7 +1,7 @@
 import {overloadOptions, OverloadSchema, parseOptions} from '../src'
 
 describe('parseOptions', () => {
-	test('parseOptions({test: true, two: false}, {test: false, other: false}) should return {test: true, other: false, two: false}', () => {
+	it('parseOptions({test: true, two: false}, {test: false, other: false}) should return {test: true, other: false, two: false}', () => {
 		const test_object = {
 			test: true,
 			two: false
@@ -15,10 +15,10 @@ describe('parseOptions', () => {
 			other: false,
 			two: false
 		}
-		expect(parseOptions(test_object, default_object)).toEqual(expected_object)
+		expect(parseOptions(test_object, default_object)).toStrictEqual(expected_object)
 	})
 
-	test('parseOptions(true, {test: false, other: false}, "test") should return {test: true, other: false}', () => {
+	it('parseOptions(true, {test: false, other: false}, "test") should return {test: true, other: false}', () => {
 		const test_object = true
 		const default_object = {
 			test: false,
@@ -28,17 +28,17 @@ describe('parseOptions', () => {
 			test: true,
 			other: false
 		}
-		expect(parseOptions(test_object, default_object, 'test')).toEqual(expected_object)
+		expect(parseOptions(test_object, default_object, 'test')).toStrictEqual(expected_object)
 	})
 
-	test('parseOptions(undefined, true) should return throw a TypeError', () => {
+	it('parseOptions(undefined, true) should return throw a TypeError', () => {
 		const test_object = undefined
 		const default_object = true
 		// @ts-expect-error
 		expect(() => parseOptions(test_object, default_object)).toThrow(TypeError)
 	})
 
-	test('parseOptions({test: true, two: false}, {test: false, other: false}) should return {test: true, other: false, two: false}', () => {
+	it('parseOptions({test: undefined, two: false}, {test: false, other: false}) should return {test: false, other: false, two: false}', () => {
 		const test_object = {
 			test: undefined,
 			two: false
@@ -52,7 +52,7 @@ describe('parseOptions', () => {
 			other: false,
 			two: false
 		}
-		expect(parseOptions(test_object, default_object)).toEqual(expected_object)
+		expect(parseOptions(test_object, default_object)).toStrictEqual(expected_object)
 	})
 })
 
@@ -92,27 +92,27 @@ describe('overloadOptions', () => {
 		}
 	}
 
-	test('overloadOptions("test", {}, {}) = {channel: "test", context: {}, config: {}}', () => {
+	it('overloadOptions("test", {}, {}) = {channel: "test", context: {}, config: {}}', () => {
 		expect(overloadOptions([
 			baseChannel,
 			baseContext,
 			baseConfig
-		], baseSchemas)).toEqual(baseExpected)
+		], baseSchemas)).toStrictEqual(baseExpected)
 	})
 
-	test('overloadOptions({}, {}) = {context: {}, config: {}}', () => {
+	it('overloadOptions({}, {}) = {context: {}, config: {}}', () => {
 		const expected = {
 			context: baseExpected.context,
 			config: baseExpected.config
 		}
-		expect(overloadOptions([baseContext, baseConfig], baseSchemas)).toEqual(expected)
+		expect(overloadOptions([baseContext, baseConfig], baseSchemas)).toStrictEqual(expected)
 	})
 
-	test('overloadOptions("test", {}) = {channel: "test", context: {}, config: undefined}', () => {
+	it('overloadOptions("test", {}) = {channel: "test", context: {}, config: undefined}', () => {
 		const expected = {
 			channel: baseExpected.channel,
 			context: baseExpected.context
 		}
-		expect(overloadOptions([baseChannel, baseContext], baseSchemas)).toEqual(expected)
+		expect(overloadOptions([baseChannel, baseContext], baseSchemas)).toStrictEqual(expected)
 	})
 })

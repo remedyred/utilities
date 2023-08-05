@@ -32,7 +32,7 @@ describe('arrays', () => {
 
 		/* eslint-disable unicorn/consistent-function-scoping */
 		const callback = (...args: any[]) => args[0] > 5
-		expect(arrayReject(arr, callback)).toEqual([
+		expect(arrayReject(arr, callback)).toStrictEqual([
 			1,
 			2,
 			3,
@@ -48,7 +48,7 @@ describe('arrays', () => {
 			...arr_upper,
 			...mock_array_strings
 		]
-		expect(arrayUnique(arr)).toEqual([...mock_array_strings, ...arr_upper])
+		expect(arrayUnique(arr)).toStrictEqual([...mock_array_strings, ...arr_upper])
 	})
 
 	it('arrayUniqueInsensitive(arr) should return unique values (case insensitive)', () => {
@@ -58,6 +58,6 @@ describe('arrays', () => {
 			...arr_upper,
 			...mock_array_strings
 		]
-		expect(arrayUniqueInsensitive(arr)).toEqual(mock_array_strings)
+		expect(arrayUniqueInsensitive(arr)).toStrictEqual(mock_array_strings)
 	})
 })

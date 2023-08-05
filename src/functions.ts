@@ -112,7 +112,10 @@ export function overloadOptions(options: any[], schemas: OverloadSchema[]): obje
 	const schema = matches[0] || schemas[0] || {}
 	const results: IObject = {}
 	for (const name in schema) {
-		results[name] = options.shift()
+		const resultValue = options.shift()
+		if (resultValue !== undefined) {
+			results[name] = resultValue
+		}
 	}
 
 	return results

@@ -172,8 +172,8 @@ describe('objects', () => {
 			expect(objectFlatten).toBeDefined()
 		})
 
-		it.skip('should accept a nested object, and return an object with only a single level', () => {
-			expect(nestedObject).toStrictEqual({
+		it('should accept a nested object, and return an object with only a single level', () => {
+			expect(objectFlatten(nestedObject)).toStrictEqual({
 				a: 1,
 				b: 2,
 				c: 3,
@@ -249,15 +249,13 @@ describe('objects', () => {
 			expect(objectMergeDeep).toBeDefined()
 		})
 
-		it.skip('objectMergeDeep should return expected output', () => {
+		it('objectMergeDeep should return expected output', () => {
 			expect(objectMergeDeep(mockObjectWithArray, mockObjectWithSameArray)).toStrictEqual({
 				...mockPlainObject,
 				l: [
-					11,
-					12,
-					13,
 					14,
-					15
+					15,
+					13
 				]
 			})
 		})
@@ -285,16 +283,13 @@ describe('objects', () => {
 		beforeEach(() => {
 			pullableObject = {...mockPlainObject}
 			pulledKey = 'a'
+			pulledValue = objectPull(pullableObject, pulledKey)
 		})
 
 		it('should accept an object and a key', () => {
 			expect(() => {
 				pulledValue = objectPull(pullableObject, pulledKey)
 			}).not.toThrow()
-		})
-
-		beforeEach(() => {
-			pulledValue = objectPull(pullableObject, pulledKey)
 		})
 
 		it('should return the value of the key', () => {
@@ -322,19 +317,19 @@ describe('objects', () => {
 		})
 
 		it('unsorted object should not equal sorted object', () => {
-			expect(JSON.stringify(unsortedObject)).not.toEqual(JSON.stringify(mockPlainObject))
+			expect(JSON.stringify(unsortedObject)).not.toStrictEqual(JSON.stringify(mockPlainObject))
 		})
 
 		it('should accept an object and sort it by it\'s keys', () => {
 			const sorted = objectSort(unsortedObject)
-			expect(JSON.stringify(sorted)).toEqual(JSON.stringify(mockPlainObject))
+			expect(JSON.stringify(sorted)).toStrictEqual(JSON.stringify(mockPlainObject))
 		})
 
 		it('should accept an object and sort it by a predicate', () => {
 			const sorted = objectSort(unsortedObject, ([, value_a]: [string, any], [, value_b]: [string, any]) => {
 				return value_a - value_b
 			})
-			expect(JSON.stringify(sorted)).toEqual(JSON.stringify({
+			expect(JSON.stringify(sorted)).toStrictEqual(JSON.stringify({
 				a: 1,
 				b: 2,
 				c: 3
