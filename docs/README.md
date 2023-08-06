@@ -98,6 +98,7 @@
 
 ### Modules Functions
 
+- [diff](README.md#diff)
 - [objectDiff](README.md#objectdiff)
 - [plural](README.md#plural)
 - [singular](README.md#singular)
@@ -1084,28 +1085,45 @@ ___
 
 ## Modules Functions
 
-### objectDiff
+### diff
 
-▸ **objectDiff**<`T`\>(`obj1`, `obj2`): `Partial`<`T`\>
+▸ **diff**(`subject1`, `subject2`): `any`
 
-Get the difference between two objects
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` = `any` |
+Get the difference between two objects or arrays
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `obj1` | `any` |
-| `obj2` | `any` |
+| `subject1` | `any` |
+| `subject2` | `any` |
 
 #### Returns
 
-`Partial`<`T`\>
+`any`
+
+___
+
+### objectDiff
+
+▸ **objectDiff**(`subject1`, `subject2`): `any`
+
+Get the difference between two objects or arrays
+
+**`Deprecated`**
+
+Use `diff` instead
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `subject1` | `any` |
+| `subject2` | `any` |
+
+#### Returns
+
+`any`
 
 ___
 
