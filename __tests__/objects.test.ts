@@ -1,5 +1,6 @@
 /* eslint-disable unicorn/consistent-function-scoping */
 import {
+	diff,
 	objectClone,
 	objectCopy,
 	objectExcept,
@@ -59,6 +60,37 @@ const mockObjectWithArray = {
 }
 
 const mockObjectWithSameArray = {l: [14, 15]}
+
+const mockMixedObject = {
+	ratingKey: '68490',
+	summary: 'With her mother dead and father long gone, Hatori Chise has spent her childhood being passed unwanted fro',
+	index: 1,
+	banner: '/library/metadata/68490/banner/1691297674',
+	theme: '/library/metadata/68490/theme/1691297674',
+	addedAt: 1_691_138_520,
+	updatedAt: 1_691_297_674,
+	Genre: [
+		{
+			tag: 'Drama'
+		}
+	],
+	Collection: [
+		{
+			tag: 'Comedy'
+		}
+	],
+	Role: [
+		{
+			tag: 'Takeuchi Ryouta'
+		},
+		{
+			tag: 'Endou Aya'
+		},
+		{
+			tag: 'Uchiyama Kouki'
+		}
+	]
+}
 
 describe('objects', () => {
 	describe('objectFindKey', () => {
@@ -334,6 +366,46 @@ describe('objects', () => {
 				b: 2,
 				c: 3
 			}))
+		})
+	})
+
+	describe('diff', () => {
+		it('should expose a function', () => {
+			expect(diff).toBeDefined()
+		})
+
+		it('should return the difference between two objects', () => {
+			const subject1 = {
+				ratingKey: '68490',
+				summary: 'With Something Something',
+				index: 2,
+				Genre: [
+					{
+						tag: 'Drama'
+					}
+				]
+			}
+
+			const subject2 = {
+				...subject1,
+				summary: 'With Something Something 2',
+				Genre: [
+					{
+						tag: 'Fantasy'
+					}
+				]
+			}
+
+			const subjectDiff = {
+				summary: 'With Something Something 2',
+				Genre: [
+					{
+						tag: 'Fantasy'
+					}
+				]
+			}
+
+			expect(diff(subject1, subject2)).toStrictEqual(subjectDiff)
 		})
 	})
 })

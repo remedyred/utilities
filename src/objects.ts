@@ -273,22 +273,36 @@ export function objectOverwrite<I extends object = IObject>(object: I, ...object
 }
 
 /**
- * Get the difference between two objects
- * @param {any} obj1
- * @param {any} obj2
+ * Get the difference between two objects or arrays
+ * @deprecated Use `diff` instead
  */
-export function objectDiff<T extends object = any>(obj1: Partial<T> & any, obj2: Partial<T> & any): Partial<T> {
-	const diff: Partial<T> = {}
+export const objectDiff = diff
 
-	const allKeys = new Set([...Object.keys(obj1), ...Object.keys(obj2)])
+/**
+ * Get the difference between two objects or arrays
+ * @param {any | any[]} subject1
+ * @param {any | any[]} subject2
+ */
+export function diff(subject1: any, subject2: any): any {
+	let differences: any
+	let allKeys: Set<number | string>
+	if (Array.isArray(subject1) && Array.isArray(subject2)) {
+		differences = [] as any[]
+		allKeys = new Set([...subject1.keys(), ...subject2.keys()])
+	} else if (typeof subject1 === 'object' && typeof subject2 === 'object') {
+		differences = {} as any
+		allKeys = new Set([...Object.keys(subject1), ...Object.keys(subject2)])
+	} else {
+		return subject2 as any
+	}
 
-	for (const key of allKeys) {
-		const value1 = obj1[key]
-		const value2 = obj2[key]
+	for (const key of allKeys.values()) {
+		const value1 = subject1[key]
+		const value2 = subject2[key]
 		let chosen: any
 
 		if (typeof value1 === 'object' && typeof value2 === 'object') {
-			const nestedDiff = objectDiff(value1, value2)
+			const nestedDiff = diff(value1, value2)
 			if (Object.keys(nestedDiff).length > 0) {
 				chosen = nestedDiff
 			}
@@ -297,9 +311,9 @@ export function objectDiff<T extends object = any>(obj1: Partial<T> & any, obj2:
 		}
 
 		if (chosen !== undefined) {
-			diff[key] = chosen
+			differences[key] = chosen
 		}
 	}
 
-	return diff
+	return differences
 }
