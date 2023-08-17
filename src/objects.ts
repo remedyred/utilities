@@ -301,7 +301,11 @@ export function diff(subject1: any, subject2: any): any {
 		const value2 = subject2[key]
 		let chosen: any
 
-		if (typeof value1 === 'object' && typeof value2 === 'object') {
+		if (value1 && (value2 === undefined || value2 === null)) {
+			chosen = value1
+		} else if (value2 && (value1 === undefined || value1 === null)) {
+			chosen = value2
+		} else if (typeof value1 === 'object' && typeof value2 === 'object') {
 			const nestedDiff = diff(value1, value2)
 			if (Object.keys(nestedDiff).length > 0) {
 				chosen = nestedDiff

@@ -61,37 +61,6 @@ const mockObjectWithArray = {
 
 const mockObjectWithSameArray = {l: [14, 15]}
 
-const mockMixedObject = {
-	ratingKey: '68490',
-	summary: 'With her mother dead and father long gone, Hatori Chise has spent her childhood being passed unwanted fro',
-	index: 1,
-	banner: '/library/metadata/68490/banner/1691297674',
-	theme: '/library/metadata/68490/theme/1691297674',
-	addedAt: 1_691_138_520,
-	updatedAt: 1_691_297_674,
-	Genre: [
-		{
-			tag: 'Drama'
-		}
-	],
-	Collection: [
-		{
-			tag: 'Comedy'
-		}
-	],
-	Role: [
-		{
-			tag: 'Takeuchi Ryouta'
-		},
-		{
-			tag: 'Endou Aya'
-		},
-		{
-			tag: 'Uchiyama Kouki'
-		}
-	]
-}
-
 describe('objects', () => {
 	describe('objectFindKey', () => {
 		it('should expose a function', () => {
@@ -393,7 +362,8 @@ describe('objects', () => {
 					{
 						tag: 'Fantasy'
 					}
-				]
+				],
+				originallyAvailableAt: '2019-10-04'
 			}
 
 			const subjectDiff = {
@@ -402,7 +372,8 @@ describe('objects', () => {
 					{
 						tag: 'Fantasy'
 					}
-				]
+				],
+				originallyAvailableAt: '2019-10-04'
 			}
 
 			expect(diff(subject1, subject2)).toStrictEqual(subjectDiff)
