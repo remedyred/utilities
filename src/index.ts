@@ -3,6 +3,7 @@
 export * from './arrays'
 export * from './data/reserved'
 export * from './data/variable-types'
+export * from './diff'
 export * from './functions'
 export * from './generators'
 export * from './numbers'

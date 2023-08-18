@@ -2,8 +2,13 @@
 
 ## Table of contents
 
+### Classes
+
+- [Diff](classes/Diff.md)
+
 ### Modules Interfaces
 
+- [DiffOptions](interfaces/DiffOptions.md)
 - [isCallableOptions](interfaces/isCallableOptions.md)
 
 ### Validation Interfaces
@@ -99,7 +104,6 @@
 ### Modules Functions
 
 - [diff](README.md#diff)
-- [objectDiff](README.md#objectdiff)
 - [plural](README.md#plural)
 - [singular](README.md#singular)
 - [toInt](README.md#toint)
@@ -1087,43 +1091,19 @@ ___
 
 ### diff
 
-▸ **diff**(`subject1`, `subject2`): `any`
-
-Get the difference between two objects or arrays
+▸ **diff**(`left`, `right`, `options?`): [`Diff`](classes/Diff.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `subject1` | `any` |
-| `subject2` | `any` |
+| `left` | `any` |
+| `right` | `any` |
+| `options?` | [`DiffOptions`](interfaces/DiffOptions.md) |
 
 #### Returns
 
-`any`
-
-___
-
-### objectDiff
-
-▸ **objectDiff**(`subject1`, `subject2`): `any`
-
-Get the difference between two objects or arrays
-
-**`Deprecated`**
-
-Use `diff` instead
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `subject1` | `any` |
-| `subject2` | `any` |
-
-#### Returns
-
-`any`
+[`Diff`](classes/Diff.md)
 
 ___
 

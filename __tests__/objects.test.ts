@@ -1,6 +1,5 @@
 /* eslint-disable unicorn/consistent-function-scoping */
 import {
-	diff,
 	objectClone,
 	objectCopy,
 	objectExcept,
@@ -335,48 +334,6 @@ describe('objects', () => {
 				b: 2,
 				c: 3
 			}))
-		})
-	})
-
-	describe('diff', () => {
-		it('should expose a function', () => {
-			expect(diff).toBeDefined()
-		})
-
-		it('should return the difference between two objects', () => {
-			const subject1 = {
-				ratingKey: '68490',
-				summary: 'With Something Something',
-				index: 2,
-				Genre: [
-					{
-						tag: 'Drama'
-					}
-				]
-			}
-
-			const subject2 = {
-				...subject1,
-				summary: 'With Something Something 2',
-				Genre: [
-					{
-						tag: 'Fantasy'
-					}
-				],
-				originallyAvailableAt: '2019-10-04'
-			}
-
-			const subjectDiff = {
-				summary: 'With Something Something 2',
-				Genre: [
-					{
-						tag: 'Fantasy'
-					}
-				],
-				originallyAvailableAt: '2019-10-04'
-			}
-
-			expect(diff(subject1, subject2)).toStrictEqual(subjectDiff)
 		})
 	})
 })

@@ -75,7 +75,7 @@ export function objectGetMethod<T = any, I extends object = IObject>(object: I, 
 export function objectFilter<
 	I extends object = IObject,
 	R = Partial<I>
-	>(object: I, predicate: ObjectPredicate = () => true): R {
+>(object: I, predicate: ObjectPredicate = () => true): R {
 	if (!isObject(object)) {
 		throw new TypeError('objectFilter: object must be an object')
 	}
@@ -272,52 +272,3 @@ export function objectOverwrite<I extends object = IObject>(object: I, ...object
 	return object
 }
 
-/**
- * Get the difference between two objects or arrays
- * @deprecated Use `diff` instead
- */
-export const objectDiff = diff
-
-/**
- * Get the difference between two objects or arrays
- * @param {any | any[]} subject1
- * @param {any | any[]} subject2
- */
-export function diff(subject1: any, subject2: any): any {
-	let differences: any
-	let allKeys: Set<number | string>
-	if (Array.isArray(subject1) && Array.isArray(subject2)) {
-		differences = [] as any[]
-		allKeys = new Set([...subject1.keys(), ...subject2.keys()])
-	} else if (typeof subject1 === 'object' && typeof subject2 === 'object') {
-		differences = {} as any
-		allKeys = new Set([...Object.keys(subject1), ...Object.keys(subject2)])
-	} else {
-		return subject2 as any
-	}
-
-	for (const key of allKeys.values()) {
-		const value1 = subject1[key]
-		const value2 = subject2[key]
-		let chosen: any
-
-		if (value1 && (value2 === undefined || value2 === null)) {
-			chosen = value1
-		} else if (value2 && (value1 === undefined || value1 === null)) {
-			chosen = value2
-		} else if (typeof value1 === 'object' && typeof value2 === 'object') {
-			const nestedDiff = diff(value1, value2)
-			if (Object.keys(nestedDiff).length > 0) {
-				chosen = nestedDiff
-			}
-		} else if (value1 !== value2) {
-			chosen = value2
-		}
-
-		if (chosen !== undefined) {
-			differences[key] = chosen
-		}
-	}
-
-	return differences
-}
