@@ -119,8 +119,16 @@ export function isString(value: any): value is string {
  * Check if a variable is a number
  * @category Validation
  */
-export function isNumber(value: any): value is number {
-	return !Number.isNaN(Number.parseInt(value))
+export function isNumber(value: unknown): value is number {
+	return typeof value === 'number'
+}
+
+/**
+ * Check if a variable can parse into a number
+ * @category Validation
+ */
+export function isNumeric(value: unknown): value is number {
+	return !Number.isNaN(Number(value))
 }
 
 /**
