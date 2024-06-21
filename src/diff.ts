@@ -6,8 +6,8 @@ const defaultOptions: Partial<DiffOptions> = {
 
 export class Diff {
 	readonly options: DiffOptions
-	private _left: any
-	private _right: any
+	private readonly _left: any
+	private readonly _right: any
 	protected _changes: any
 
 	protected _removed: any

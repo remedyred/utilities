@@ -32,7 +32,7 @@ export type AnyClass = {
  * Check if a value is undefined
  * @category Validation
  */
-export function isDefined(value: any): value is undefined {
+export function isDefined(value: unknown): value is any {
 	return value !== undefined && value !== undefined
 }
 

@@ -98,7 +98,7 @@ export function isCallable(value: any, options?: Partial<isCallableOptions> | bo
  * Merge two or more variables together
  * @category Variables
  */
-export function merge(...values: any[] | IObject[]): any[] | IObject {
+export function merge(...values: (IObject | any)[]): any[] | IObject {
 	let toReturn
 	let returnType
 	for (const value of values) {
@@ -124,7 +124,7 @@ export function merge(...values: any[] | IObject[]): any[] | IObject {
  * Merge two or more variables together, recursing child values
  * @category Variables
  */
-export function mergeDeep(...values: any[] | IObject[]): any[] | IObject {
+export function mergeDeep(...values: (IObject | any)[]): any[] | IObject {
 	let toReturn
 	let returnType
 	for (const value of values) {
