@@ -1,11 +1,11 @@
+// @ts-check
 import {defineConfig} from 'tsup'
-// @ts-expect-error
-import indexer from '@snickbit/indexer/esbuild'
+import {indexerPlugin} from '@snickbit/indexer'
 
 export default defineConfig({
 	entry: ['src/index.ts'],
 	clean: true,
 	dts: true,
 	format: ['esm', 'cjs'],
-	esbuildPlugins: [indexer()]
+	esbuildPlugins: [indexerPlugin()]
 })
