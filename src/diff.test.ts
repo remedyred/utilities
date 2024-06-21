@@ -1,4 +1,4 @@
-import {Diff, diff} from '../src'
+import {Diff, diff} from './'
 
 describe('objectDiff', () => {
 	it('should expose a diff function', () => {

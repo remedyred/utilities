@@ -10,7 +10,8 @@
 		"forceConsistentCasingInFileNames": true,
 		"lib": [
 			"esnext",
-			"dom"
+			"dom",
+			"dom.iterable",
 		],
 		"module": "commonjs",
 		"moduleResolution": "node",
@@ -31,8 +32,6 @@
 	},
 	"include": [
 		"src/**/*.ts",
-		"__tests__/**/*.ts",
-		"tsup.config.ts",
-		"package.json"
+		"tsup.config.ts"
 	]
 }

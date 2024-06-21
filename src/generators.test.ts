@@ -1,4 +1,4 @@
-import {randomString} from '../src'
+import {randomString} from './index'
 
 test('randomString should return a random 10 character string', () => {
 	const result = randomString(10)

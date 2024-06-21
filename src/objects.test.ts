@@ -17,7 +17,7 @@ import {
 	ObjectPredicate,
 	objectPull,
 	objectSort
-} from '../src'
+} from './index'
 
 const mockPlainObject = {
 	a: 1,

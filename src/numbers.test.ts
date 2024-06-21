@@ -1,4 +1,4 @@
-import {numberEven, numberOdd, numberPad} from '../src'
+import {numberEven, numberOdd, numberPad} from './index'
 
 describe('numbers', () => {
 	describe('numberPad', () => {

@@ -1,4 +1,5 @@
 {
 	"source": "src/**/*.ts",
+	"ignore": ["src/**/*.test.ts"],
 	"output": "src/index.ts"
 }
