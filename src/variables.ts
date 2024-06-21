@@ -99,8 +99,8 @@ export function isCallable(value: any, options?: Partial<isCallableOptions> | bo
  * @category Variables
  */
 export function merge(...values: (IObject | any)[]): any[] | IObject {
-	let toReturn
-	let returnType
+	let toReturn: any = null
+	let returnType: any = null
 	for (const value of values) {
 		if (!isNullDefined(value)) {
 			if (!returnType || typeOf(value) !== returnType) {
