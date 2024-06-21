@@ -1,8 +1,8 @@
-import {isFunction} from './validations'
+import {isFunction, isNumber} from './validations'
 import {mergeDeep, typeOf} from './variables'
 
 /** @category Arrays */
-export type ArrayPredicate = <T = any>(value: T, index?: number, array?: T[]) => T
+export type ArrayPredicate<T = any> = <F = T>(value: F, index?: number, array?: F[]) => F
 
 /**
  * Checks if the given array only contains a single value, optionally pass a value or predicate to check against
@@ -170,4 +170,41 @@ export function arrayToKeyValue<TValue = any>(array: [number | string | symbol, 
 		result[String(key)] = value
 	}
 	return result
+}
+
+/**
+ * Pull elements from an array and return them as a new array
+ * by providing a start index and optionally a count
+ * if no count is provided, it pulls the remaining elements
+ *
+ * Alternatively, you can provide a predicate function to pull elements
+ *
+ * @category Arrays
+ */
+export function arrayPull<T = unknown>(array: T[], start: number, count?: number): T[]
+
+/**
+ * Pull elements from an array and return them as a new array
+ * by providing a predicate function to build your own comparison
+ *
+ * Alternatively, by providing a start index and optionally a count
+ * if no count is provided, it pulls the remaining elements
+ *
+ * @category Arrays
+ */
+export function arrayPull<T = unknown>(array: T[], predicate: ArrayPredicate<T>): T[]
+export function arrayPull<T = unknown>(array: T[], startOrPredicate: ArrayPredicate<T> | number, count?: number): T[] {
+	let start: number
+
+	if (isNumber(startOrPredicate)) {
+		start = startOrPredicate
+		count ??= array.length - start
+	} else {
+		start = array.findIndex(element => startOrPredicate(element))
+		count = 1
+	}
+
+	return start < 0
+		? []
+		: [...array].splice(start, count)
 }
