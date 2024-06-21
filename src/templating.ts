@@ -6,7 +6,9 @@ import {objectFlatten} from './objects'
  * @returns {any}
  * @category Templating
  */
-export const escapeRegExp = (text: string) => String(text).replaceAll(/[$()*+.?[\\\]^{|}]/g, '\\$&')
+export function escapeRegExp(text: string) {
+	return String(text).replaceAll(/[$()*+.?[\\\]^{|}]/g, '\\$&')
+}
 
 /**
  * escape regexp replacement string
@@ -14,7 +16,9 @@ export const escapeRegExp = (text: string) => String(text).replaceAll(/[$()*+.?[
  * @returns {any}
  * @category Templating
  */
-export const escapeReplacement = (text: string) => String(text).replaceAll('$', '$$$$')
+export function escapeReplacement(text: string) {
+	return String(text).replaceAll('$', '$$$$')
+}
 
 /** @category Templating */
 export type interpolateReplacements = Record<string, any | number | string>

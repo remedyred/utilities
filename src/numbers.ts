@@ -47,7 +47,9 @@ export function formatBytes(bytes: number, decimals = 2): string {
  * @param [decimals=2] - The number of decimals.
  * @category Numbers
  */
-export const formatCurrency = (amount: number, symbol = '$', decimals = 2) => symbol + Number.parseFloat(String(amount || '0')).toFixed(decimals)
+export function formatCurrency(amount: number, symbol = '$', decimals = 2) {
+	return symbol + Number.parseFloat(String(amount || '0')).toFixed(decimals)
+}
 
 /**
  * Format a number as a percentage.
@@ -55,7 +57,9 @@ export const formatCurrency = (amount: number, symbol = '$', decimals = 2) => sy
  * @param [decimals=2] - The number of decimals to show.
  * @category Numbers
  */
-export const formatPercentage = (amount: number, decimals = 2) => `${Number.parseFloat(String(amount || '0')).toFixed(decimals)}%`
+export function formatPercentage(amount: number, decimals = 2) {
+	return `${Number.parseFloat(String(amount || '0')).toFixed(decimals)}%`
+}
 
 /**
  * limit the amount of decimals to the given number
@@ -63,7 +67,9 @@ export const formatPercentage = (amount: number, decimals = 2) => `${Number.pars
  * @param [max_places=2] - the maximum number of decimals
  * @category Numbers
  */
-export const maxDecimals = (value: number, max_places = 2) => +Number.parseFloat(String(value)).toFixed(max_places)
+export function maxDecimals(value: number, max_places = 2) {
+	return +Number.parseFloat(String(value)).toFixed(max_places)
+}
 
 /**
  * Generate a random number between min and max.

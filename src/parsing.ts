@@ -97,4 +97,6 @@ export function JSONStringify<T = any>(data: T, options: JSONStringifyOptions = 
  * Pretty print a JSON string
  * @category Parsing
  */
-export const JSONPrettify = (data: any, spacer = 2): string => JSONStringify(data, {pretty: spacer})
+export function JSONPrettify(data: any, spacer = 2): string {
+	return JSONStringify(data, {pretty: spacer})
+}

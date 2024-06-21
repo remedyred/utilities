@@ -51,25 +51,33 @@ export function isEmpty(value: any): value is EmptyArray | EmptyObject | '' | nu
  * Check if a value is null or undefined
  * @category Validation
  */
-export const isNullDefined = (value: any): value is null | undefined => value === null || value === undefined
+export function isNullDefined(value: any): value is null | undefined {
+	return value === null || value === undefined
+}
 
 /**
  * Check if a variable is a promise
  * @category Validation
  */
-export const isPromise = <T = any>(value: any): value is Promise<T> => value && typeof value.then === 'function' && typeof value.catch === 'function'
+export function isPromise<T = any>(value: any): value is Promise<T> {
+	return value && typeof value.then === 'function' && typeof value.catch === 'function'
+}
 
 /**
  * Check if a variable is an async function
  * @category Validation
  */
-export const isAsyncFunction = <T = any>(value: any): value is AsyncFunction<T> => typeof value === 'function' && value.constructor.name === 'AsyncFunction'
+export function isAsyncFunction<T = any>(value: any): value is AsyncFunction<T> {
+	return typeof value === 'function' && value.constructor.name === 'AsyncFunction'
+}
 
 /**
  * Check if a variable can be used with await (a Promise or AsyncFunction)
  * @category Validation
  */
-export const isAwaitable = <T = any>(value: any): value is AsyncFunction<T> | Promise<T> => isAsyncFunction(value) || isPromise(value)
+export function isAwaitable<T = any>(value: any): value is AsyncFunction<T> | Promise<T> {
+	return isAsyncFunction(value) || isPromise(value)
+}
 
 /**
  * Check if a variable is a primitive type. i.e. string, boolean, number, or bigint
@@ -95,25 +103,33 @@ export function isObject(value: any, strict = true): value is Record<any, any> {
  * Checks if variable is an array and is not empty
  * @category Validation
  */
-export const isArray = (value: any): value is ArrayWithValues => Array.isArray(value) && !!value.length
+export function isArray(value: any): value is ArrayWithValues {
+	return Array.isArray(value) && !!value.length
+}
 
 /**
  * Check if a variable is a string
  * @category Validation
  */
-export const isString = (value: any): value is string => typeof value === 'string'
+export function isString(value: any): value is string {
+	return typeof value === 'string'
+}
 
 /**
  * Check if a variable is a number
  * @category Validation
  */
-export const isNumber = (value: any): value is number => !Number.isNaN(Number.parseInt(value))
+export function isNumber(value: any): value is number {
+	return !Number.isNaN(Number.parseInt(value))
+}
 
 /**
  * Check if a variable is a boolean
  * @category Validation
  */
-export const isBoolean = (value: any): value is boolean => typeof value === 'boolean'
+export function isBoolean(value: any): value is boolean {
+	return typeof value === 'boolean'
+}
 
 /**
  * Check if a variable is a function
@@ -131,13 +147,17 @@ export function isFunction(value: any, strict?: boolean): value is AnyFunction |
  * Check if a variable is a class
  * @category Validation
  */
-export const isClass = (value: any): value is AnyClass => isFunction(value) && /^\s*class\s+/.test(value.toString())
+export function isClass(value: any): value is AnyClass {
+	return isFunction(value) && /^\s*class\s+/.test(value.toString())
+}
 
 /**
  * Check if a variable is a Set
  * @category Validation
  */
-export const isSet = <T = any>(value: any): value is Set<T> => value instanceof Set
+export function isSet<T = any>(value: any): value is Set<T> {
+	return value instanceof Set
+}
 
 /**
  * Check if a variable is the given type
@@ -151,7 +171,9 @@ export function isType(value: any, type: VariableType | VariableTypeDefinition |
  * Check if a variable is a Base64 string
  * @category Validation
  */
-export const isBase64 = (content: string) => /^([\d+/A-Za-z]{4})*(([\d+/A-Za-z]{2}==)|([\d+/A-Za-z]{3}=))?$/.test(content)
+export function isBase64(content: string) {
+	return /^([\d+/A-Za-z]{4})*(([\d+/A-Za-z]{2}==)|([\d+/A-Za-z]{3}=))?$/.test(content)
+}
 
 /**
  * Check if a variable is a valid date

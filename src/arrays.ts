@@ -54,7 +54,7 @@ export function arrayUniqueInsensitive<T = any>(array: T[], key?: string): T[] {
  * arrayToObject([{id: 1, name: 'John'}, {id: 2, name: 'Jane'}], 'name')
  * // {John: {id: 1, name: 'John'}, Jane: {id: 2, name: 'Jane'}}
  */
-export const arrayToObject = <T = any, V = T>(array: T[], key: keyof T, value: keyof T): Record<string, V> => {
+export function arrayToObject<T = any, V = T>(array: T[], key: keyof T, value: keyof T): Record<string, V> {
 	return Object.fromEntries(array.map(item => [
 		// eslint-disable-next-line array-element-newline
 		item[key], // set new object key
@@ -66,7 +66,9 @@ export const arrayToObject = <T = any, V = T>(array: T[], key: keyof T, value: k
  * Wrap a variable in an array if it is not already an array
  * @category Arrays
  */
-export const arrayWrap = <T = any>(values: T | T[]): T[] => Array.isArray(values) ? values : [values]
+export function arrayWrap<T = any>(values: T | T[]): T[] {
+	return Array.isArray(values) ? values : [values]
+}
 
 /**
  * Return the duplicate values from an array
@@ -169,4 +171,3 @@ export function arrayToKeyValue<TValue = any>(array: [number | string | symbol, 
 	}
 	return result
 }
-

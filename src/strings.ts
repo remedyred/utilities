@@ -19,7 +19,9 @@ export const capitals = /[A-Z\u00C0-Ý]+/g
  * Convert a string to snake_case
  * @category Strings
  */
-export const snakeCase = (text: string) => slugify(text, '_')
+export function snakeCase(text: string) {
+	return slugify(text, '_')
+}
 
 /**
  * Convert a string to kebab-case
@@ -28,7 +30,9 @@ export const snakeCase = (text: string) => slugify(text, '_')
  * @returns {string}
  * @category Strings
  */
-export const kebabCase = (text: string) => slugify(text)
+export function kebabCase(text: string) {
+	return slugify(text)
+}
 
 /**
  * Convert a string to camelCase
@@ -36,23 +40,29 @@ export const kebabCase = (text: string) => slugify(text)
  * @see https://www.npmjs.com/package/just-camel-case
  * @category Strings
  */
-export const camelCase = (text: string): string => justCamelCase(text)
+export function camelCase(text: string): string {
+	return justCamelCase(text)
+}
 
 /**
  * Convert a string to initials
  * @category Strings
  */
-export const initials = (text: string): string => text
-	.split(/[^A-Za-z]/)
-	.filter(Boolean)
-	.map(word => word[0].toUpperCase())
-	.join('')
+export function initials(text: string): string {
+	return text
+		.split(/[^A-Za-z]/)
+		.filter(Boolean)
+		.map(word => word[0].toUpperCase())
+		.join('')
+}
 
 /**
  * Limit a string to a certain length
  * @category Strings
  */
-export const limitString = (text: string, limit = 100, suffix = '...'): string => text.length > limit ? text.slice(0, Math.max(0, limit)) + suffix : text
+export function limitString(text: string, limit = 100, suffix = '...'): string {
+	return text.length > limit ? text.slice(0, Math.max(0, limit)) + suffix : text
+}
 
 /**
  * Limit a string to a certain amount of words
