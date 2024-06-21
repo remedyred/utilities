@@ -11,7 +11,7 @@ describe('objectDiff', () => {
 	it('should return the difference between two objects', () => {
 		const subject1: any = {
 			ratingKey: '68490',
-			summary: 'With Something Something',
+			summary: 'With Something',
 			index: 2,
 			Genre: [
 				{
@@ -23,7 +23,7 @@ describe('objectDiff', () => {
 
 		const subject2: any = {
 			...subject1,
-			summary: 'With Something Something 2',
+			summary: 'With Something 2',
 			Genre: [
 				{
 					tag: 'Fantasy'
@@ -34,7 +34,7 @@ describe('objectDiff', () => {
 		delete subject2.availableAt
 
 		const subjectDiff = {
-			summary: 'With Something Something 2',
+			summary: 'With Something 2',
 			Genre: [
 				{
 					tag: 'Fantasy'
@@ -50,7 +50,7 @@ describe('objectDiff', () => {
 	it('should return the edits between two objects', () => {
 		const original: any = {
 			ratingKey: '68490',
-			summary: 'With Something Something',
+			summary: 'With Something',
 			index: 2,
 			Genre: [
 				{
@@ -62,7 +62,7 @@ describe('objectDiff', () => {
 
 		const edited: any = {
 			...original,
-			summary: 'With Something Something 2',
+			summary: 'With Something 2',
 			Genre: [
 				{
 					tag: 'Fantasy'
@@ -73,7 +73,7 @@ describe('objectDiff', () => {
 		delete edited.availableAt
 
 		const edits = {
-			summary: 'With Something Something 2',
+			summary: 'With Something 2',
 			Genre: [
 				{
 					tag: 'Fantasy'
@@ -88,7 +88,7 @@ describe('objectDiff', () => {
 	it('should return both edits and removed as undefined', () => {
 		const original: any = {
 			ratingKey: '68490',
-			summary: 'With Something Something',
+			summary: 'With Something',
 			index: 2,
 			Genre: [
 				{
@@ -100,7 +100,7 @@ describe('objectDiff', () => {
 
 		const edited: any = {
 			...original,
-			summary: 'With Something Something 2',
+			summary: 'With Something 2',
 			Genre: [
 				{
 					tag: 'Fantasy'
@@ -111,7 +111,7 @@ describe('objectDiff', () => {
 		delete edited.availableAt
 
 		const edits = {
-			summary: 'With Something Something 2',
+			summary: 'With Something 2',
 			Genre: [
 				{
 					tag: 'Fantasy'
@@ -124,10 +124,10 @@ describe('objectDiff', () => {
 		expect(diff(original, edited).changes).toStrictEqual(edits)
 	})
 
-	it('should return just removed', () => {
+	it('should return only removed parts', () => {
 		const original: any = {
 			ratingKey: '68490',
-			summary: 'With Something Something',
+			summary: 'With Something',
 			index: 2,
 			Genre: [
 				{
@@ -139,7 +139,7 @@ describe('objectDiff', () => {
 
 		const edited: any = {
 			...original,
-			summary: 'With Something Something 2',
+			summary: 'With Something 2',
 			Genre: [
 				{
 					tag: 'Fantasy'
