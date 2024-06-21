@@ -132,7 +132,7 @@ export function slugify(text: string, replace = '-'): string {
  * Return the index of the first difference between two strings
  * @category Strings
  */
-export function findFirstDiff(first, second): number {
+export function findFirstDiff(first: string, second: string): number {
 	let index = 0
 	if (first === second) {
 		return -1
