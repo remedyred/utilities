@@ -33,7 +33,7 @@ export type AnyClass = {
  * @category Validation
  */
 export function isDefined(value: unknown): value is any {
-	return value !== undefined && value !== undefined
+	return value !== undefined && value !== null
 }
 
 /**
