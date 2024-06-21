@@ -84,9 +84,9 @@ export type OverloadSchema = Record<string, VariableType>
  * @category Functions
  */
 export function overloadOptions(options: any[], schemas: OverloadSchema[]): object {
-	let matches
+	let matches: OverloadSchema[]
 
-	// check for schemas that have the same length and same first type
+	// check for schemas that have the same length and first type
 	matches = schemas.filter(schema => Object.keys(schema).length === options.length && isType(options[0], Object.values(schema)[0]))
 
 	if (matches.length !== 1) {
@@ -102,7 +102,13 @@ export function overloadOptions(options: any[], schemas: OverloadSchema[]): obje
 
 	// get first match with same first type
 	if (matches.length !== 1) {
-		matches = [schemas.find(schema => isType(options[0], Object.values(schema)[0]))]
+		const firstMatch = schemas.find(schema => {
+			const type = Object.values(schema)[0]
+			return isType(options[0], type)
+		})
+		if (firstMatch) {
+			matches = [firstMatch]
+		}
 	}
 
 	const schema = matches[0] || schemas[0] || {}
