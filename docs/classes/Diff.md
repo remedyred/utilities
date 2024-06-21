@@ -1,88 +1,68 @@
+[**@snickbit/utilities**](../README.md) • **Docs**
+
+***
+
 # Class: Diff
-
-## Table of contents
-
-### Constructors
-
-- [constructor](Diff.md#constructor)
-
-### Properties
-
-- [options](Diff.md#options)
-
-### Accessors
-
-- [changes](Diff.md#changes)
-- [keepRemoved](Diff.md#keepremoved)
-- [keys](Diff.md#keys)
-- [removed](Diff.md#removed)
-
-### Methods
-
-- [clear](Diff.md#clear)
-- [edited](Diff.md#edited)
-- [left](Diff.md#left)
-- [original](Diff.md#original)
-- [remove](Diff.md#remove)
-- [right](Diff.md#right)
-- [set](Diff.md#set)
-- [toJSON](Diff.md#tojson)
 
 ## Constructors
 
-### constructor
+### new Diff()
 
-• **new Diff**(`left`, `right`, `options?`)
+> **new Diff**(`left`, `right`, `options`?): [`Diff`](Diff.md)
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `left` | `any` |
-| `right` | `any` |
-| `options?` | [`DiffOptions`](../interfaces/DiffOptions.md) |
+• **left**: `any`
+
+• **right**: `any`
+
+• **options?**: [`DiffOptions`](../interfaces/DiffOptions.md)
+
+#### Returns
+
+[`Diff`](Diff.md)
 
 ## Properties
 
 ### options
 
-• `Readonly` **options**: [`DiffOptions`](../interfaces/DiffOptions.md)
+> `readonly` **options**: [`DiffOptions`](../interfaces/DiffOptions.md)
 
 ## Accessors
 
 ### changes
 
-• `get` **changes**(): `any`
+> `get` **changes**(): `any`
 
 #### Returns
 
 `any`
 
-___
+***
 
 ### keepRemoved
 
-• `get` **keepRemoved**(): `boolean`
+> `get` **keepRemoved**(): `boolean`
 
 #### Returns
 
 `boolean`
 
-___
+***
 
 ### keys
 
-• `get` **keys**(): `IterableIterator`<`string` \| `number`\>
+> `get` **keys**(): `IterableIterator`\<`string` \| `number`\>
 
 #### Returns
 
-`IterableIterator`<`string` \| `number`\>
+`IterableIterator`\<`string` \| `number`\>
 
-___
+***
 
 ### removed
 
-• `get` **removed**(): `any`
+> `get` **removed**(): `any`
 
 #### Returns
 
@@ -90,128 +70,118 @@ ___
 
 ## Methods
 
-### clear
+### clear()
 
-▸ **clear**(`key`): `void`
+> **clear**(`key`): `void`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `string` \| `number` |
+• **key**: `string` \| `number`
 
 #### Returns
 
 `void`
 
-___
+***
 
-### edited
+### edited()
 
-▸ **edited**(`key?`): `any`
+> **edited**(`key`?): `any`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key?` | `string` \| `number` |
+• **key?**: `string` \| `number`
 
 #### Returns
 
 `any`
 
-___
+***
 
-### left
+### left()
 
-▸ **left**(`key?`): `any`
+> **left**(`key`?): `any`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key?` | `string` \| `number` |
+• **key?**: `string` \| `number`
 
 #### Returns
 
 `any`
 
-___
+***
 
-### original
+### original()
 
-▸ **original**(`key?`): `any`
+> **original**(`key`?): `any`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key?` | `string` \| `number` |
+• **key?**: `string` \| `number`
 
 #### Returns
 
 `any`
 
-___
+***
 
-### remove
+### remove()
 
-▸ **remove**(`key`): `void`
+> **remove**(`key`): `void`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `string` \| `number` |
+• **key**: `string` \| `number`
 
 #### Returns
 
 `void`
 
-___
+***
 
-### right
+### right()
 
-▸ **right**(`key?`): `any`
+> **right**(`key`?): `any`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key?` | `string` \| `number` |
+• **key?**: `string` \| `number`
 
 #### Returns
 
 `any`
 
-___
+***
 
-### set
+### set()
 
-▸ **set**(`key`, `value`): `void`
+> **set**(`key`, `value`): `void`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `string` \| `number` |
-| `value` | `any` |
+• **key**: `string` \| `number`
+
+• **value**: `any`
 
 #### Returns
 
 `void`
 
-___
+***
 
-### toJSON
+### toJSON()
 
-▸ **toJSON**(): `Object`
+> **toJSON**(): `object`
 
 #### Returns
 
-`Object`
+`object`
 
-| Name | Type |
-| :------ | :------ |
-| `changes` | `any` |
-| `removed` | `any` |
+##### changes
+
+> **changes**: `any`
+
+##### removed
+
+> **removed**: `any`

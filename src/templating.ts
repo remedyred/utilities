@@ -2,8 +2,6 @@ import {objectFlatten} from './objects'
 
 /**
  * escape regexp
- * @param text
- * @returns {any}
  * @category Templating
  */
 export function escapeRegExp(text: string) {
@@ -12,8 +10,6 @@ export function escapeRegExp(text: string) {
 
 /**
  * escape regexp replacement string
- * @param text
- * @returns {any}
  * @category Templating
  */
 export function escapeReplacement(text: string) {

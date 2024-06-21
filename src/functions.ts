@@ -7,10 +7,6 @@ import {AnyFunction, isArray, isObject, isType} from './validations'
  * Parse options for a function
  * @category Functions
  *
- * @param {IObject | any} given - The given options
- * @param {IObject} defaults - The default options
- * @param {string} [non_object_key] - Optional key to use if the given options are not an object, will be added to the defaults object
- *
  * @example
  * const options = parseOptions(true, {param: 'default'}, 'my_param')
  * // {param: 'default', my_param: true}
@@ -20,12 +16,12 @@ export function parseOptions(given: IObject | any, defaults: IObject, non_object
 		throw new TypeError('defaults must be an object')
 	}
 
-	// if given is undefined, just return the defaults
+	// if given is undefined, only return the defaults
 	if (given === undefined) {
 		return {...defaults}
 	}
 
-	// if given is not an object, assign it to the non_object_key
+	// if given isn't an object, assign it to the non_object_key
 	if (!isObject(given) && non_object_key) {
 		given = {[non_object_key]: given}
 	}
@@ -124,8 +120,6 @@ export function overloadOptions(options: any[], schemas: OverloadSchema[]): obje
 /**
  * Debounce a function
  * @category Functions
- * @param {TFunction} fn - The function to debounce
- * @param {number} [delay=50] - The delay in milliseconds
  */
 export function debounce<F extends TFunction>(fn: F, delay = 50) {
 	let timeout: ReturnType<typeof setTimeout>
@@ -140,8 +134,6 @@ export function debounce<F extends TFunction>(fn: F, delay = 50) {
 /**
  * Debounce a function asynchronously, returning a promise
  * @category Functions
- * @param {TFunction} fn - The function to debounce
- * @param {number} [delay=50] - The delay in milliseconds
  */
 export function debounceAsync<F extends TFunction>(fn: F, delay = 50) {
 	let timeoutId: ReturnType<typeof setTimeout>

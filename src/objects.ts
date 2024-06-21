@@ -19,9 +19,6 @@ export function objectFindKey<I extends object = IObject>(object: I, predicate: 
 
 /**
  * Finds an object property's value that matches the given predicate
- * @param {object} object
- * @param {string|function} [predicate] - A string or function that returns a boolean
- * @returns {any}
  * @category Objects
  */
 export function objectFind<T = any, I extends object = IObject>(object: I, predicate: ObjectPredicate | string | symbol): T | undefined {
@@ -113,9 +110,6 @@ export function objectOnly<I extends object = IObject>(object: I, allowed: strin
 
 /**
  * Returns a new object without the excluded properties.
- * @param object - the object to filter
- * @param {array} excluded - the allowed properties
- * @returns {object}
  * @category Objects
  */
 export function objectExcept<I extends object = IObject>(object: I, excluded: string[]): I {
@@ -271,4 +265,3 @@ export function objectOverwrite<I extends object = IObject>(object: I, ...object
 	}
 	return object
 }
-

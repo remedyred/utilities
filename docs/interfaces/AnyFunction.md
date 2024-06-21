@@ -1,23 +1,19 @@
-# Interface: AnyFunction<T\>
+[**@snickbit/utilities**](../README.md) • **Docs**
+
+***
+
+# Interface: AnyFunction()\<T\>
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `any` |
+• **T** = `any`
 
-## Callable
+> **AnyFunction**(...`args`): `T`
 
-### AnyFunction
+## Parameters
 
-▸ **AnyFunction**(`...args`): `T`
+• ...**args**: `any`[]
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `...args` | `any`[] |
-
-#### Returns
+## Returns
 
 `T`

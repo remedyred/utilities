@@ -1,23 +1,19 @@
-# Interface: AsyncFunction<T\>
+[**@snickbit/utilities**](../README.md) • **Docs**
+
+***
+
+# Interface: AsyncFunction()\<T\>
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `any` |
+• **T** = `any`
 
-## Callable
+> **AsyncFunction**(...`args`): `Promise`\<`T`\>
 
-### AsyncFunction
+## Parameters
 
-▸ **AsyncFunction**(`...args`): `Promise`<`T`\>
+• ...**args**: `any`[]
 
-#### Parameters
+## Returns
 
-| Name | Type |
-| :------ | :------ |
-| `...args` | `any`[] |
-
-#### Returns
-
-`Promise`<`T`\>
+`Promise`\<`T`\>

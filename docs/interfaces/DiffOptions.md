@@ -1,13 +1,11 @@
+[**@snickbit/utilities**](../README.md) • **Docs**
+
+***
+
 # Interface: DiffOptions
-
-## Table of contents
-
-### Properties
-
-- [keepRemoved](DiffOptions.md#keepremoved)
 
 ## Properties
 
-### keepRemoved
+### keepRemoved?
 
-• `Optional` **keepRemoved**: `boolean`
+> `optional` **keepRemoved**: `boolean`

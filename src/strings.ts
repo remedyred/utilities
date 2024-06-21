@@ -25,9 +25,6 @@ export function snakeCase(text: string) {
 
 /**
  * Convert a string to kebab-case
- *
- * @param text - The string to convert
- * @returns {string}
  * @category Strings
  */
 export function kebabCase(text: string) {
@@ -133,9 +130,6 @@ export function slugify(text: string, replace = '-'): string {
 
 /**
  * Return the index of the first difference between two strings
- * @param first
- * @param second
- * @returns {number} -1 if no difference
  * @category Strings
  */
 export function findFirstDiff(first, second): number {
@@ -167,9 +161,6 @@ export {singular} from '@snickbit/plural'
 
 /**
  * Wrap a string at a certain character length. Optionally add padding to each line
- * @param {string} text - The text to wrap
- * @param {number} characters - Number of characters to wrap at
- * @param {number} [padding] - Number of characters to pad each line with
  * @category Strings
  */
 export function wordWrap(text: string, characters: number, padding?: number): string {
@@ -191,9 +182,6 @@ export function wordWrap(text: string, characters: number, padding?: number): st
 
 /**
  * Compare two strings using a "natural order" algorithm
- * @param {string} str1
- * @param {string} str2
- * @param {boolean} [caseSensitive=false]
  * @category Strings
  */
 export function naturalSort(str1: string, str2: string, caseSensitive = false): number {
@@ -210,8 +198,6 @@ export function naturalSort(str1: string, str2: string, caseSensitive = false): 
 
 /**
  * Capitalize the first character of a string
- * @param {string} text - The text to capitalize
- * @param {boolean} [normalize=false] - Convert the rest of the string to lowercase
  * @category Strings
  */
 export function upperFirst(text: string, normalize = false) {

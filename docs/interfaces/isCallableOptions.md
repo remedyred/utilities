@@ -1,20 +1,17 @@
+[**@snickbit/utilities**](../README.md) • **Docs**
+
+***
+
 # Interface: isCallableOptions
-
-## Table of contents
-
-### Properties
-
-- [async](isCallableOptions.md#async)
-- [strict](isCallableOptions.md#strict)
 
 ## Properties
 
 ### async
 
-• **async**: ``false``
+> **async**: `false`
 
-___
+***
 
 ### strict
 
-• **strict**: ``false``
+> **strict**: `false`
