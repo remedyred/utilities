@@ -170,3 +170,39 @@ export function debounceAsync<F extends TFunction>(fn: F, delay = 50) {
  * @category Functions
  */
 export const debouncePromise = debounceAsync
+
+/**
+ * Creates a memoized version of the provided function.
+ *
+ * The memoized function caches the return value based on its arguments.
+ * Later calls with the same arguments will return the cached result.
+ *
+ * @template F - The type of the function to memoize.
+ * @param {F} fn - The function to memoize.
+ * @returns {F} - A memoized version of the provided function.
+ *
+ * @example
+ * const add = (a, b) => a + b;
+ * const memoizedAdd = memoize(add);
+ * memoizedAdd(1, 2); // Computes and caches the result.
+ * memoizedAdd(1, 2); // Returns the cached result.
+ */
+export function memoize<F extends (...args: any[]) => any>(fn: F): F {
+	const cache = new Map<any, any>()
+	return function(...args: Parameters<F>) {
+		let currentCache = cache
+		for (const arg of args) {
+			if (!currentCache.has(arg)) {
+				currentCache.set(arg, new Map())
+			}
+			currentCache = currentCache.get(arg)
+		}
+		if (currentCache.has('result')) {
+			return currentCache.get('result')
+		}
+		const result = fn.apply(this, args)
+		currentCache.set('result', result)
+		return result
+	} as F
+}
+

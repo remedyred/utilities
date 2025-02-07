@@ -67,6 +67,7 @@
 - [primitive](variables/primitive.md)
 - [reserved](variables/reserved.md)
 - [diff](functions/diff.md)
+- [memoize](functions/memoize.md)
 - [plural](functions/plural.md)
 - [singular](functions/singular.md)
 - [toInt](functions/toInt.md)
