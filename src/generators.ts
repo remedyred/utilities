@@ -1,14 +1,5 @@
-import {v4 as secureUuid} from '@lukeed/uuid/secure'
 import {IObject} from './objects'
 import {clone} from './variables'
-
-/**
- * Create a uuid with an optional prefix. Prefix will replace the first part of the uuid.
- * @category Generators
- */
-export function uuid(prefix = ''): string {
-	return `${prefix}${secureUuid().slice(prefix.length)}`
-}
 
 /**
  * Generate a random string

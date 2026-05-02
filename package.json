@@ -37,7 +37,6 @@
 		"testEnvironment": "node"
 	},
 	"dependencies": {
-		"@lukeed/uuid": "2.0.1",
 		"@snickbit/plural": "1.0.20",
 		"just-camel-case": "6.2.0"
 	},
