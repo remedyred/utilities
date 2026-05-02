@@ -38,7 +38,6 @@
 - [combinations](functions/combinations.md)
 - [makeRandomSegment](functions/makeRandomSegment.md)
 - [randomString](functions/randomString.md)
-- [uuid](functions/uuid.md)
 
 ## Misc.
 
